@@ -77,7 +77,7 @@ class ViewController: UIViewController {
     @objc func buttonAction(sender: UIButton!) {
         let buttonTag: UIButton = sender
         if buttonTag.tag == 1 {
-            //try to authenticate user
+            
         }
     }
 }

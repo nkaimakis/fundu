@@ -15,7 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        //create new window (where all view controllers appear)
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        //create new instance of view controller
+        let loginViewController = ViewController()
+        
+        //set initial VC to our instance
+        window?.rootViewController = loginViewController
+        
+        //present the window
+        window?.makeKeyAndVisible()
+        
         return true
     }
 
