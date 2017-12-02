@@ -7,15 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		015B17B41FCFB5B000617D22 /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 015B17B31FCFB5B000617D22 /* DidactGothic-Regular.ttf */; };
-		015B17B51FCFB5B000617D22 /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 015B17B31FCFB5B000617D22 /* DidactGothic-Regular.ttf */; };
-		015B17B61FCFB5B000617D22 /* DidactGothic-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 015B17B31FCFB5B000617D22 /* DidactGothic-Regular.ttf */; };
 		01777AA21FCF6EF4002B95D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01777AA11FCF6EF4002B95D4 /* AppDelegate.swift */; };
 		01777AA41FCF6EF4002B95D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01777AA31FCF6EF4002B95D4 /* ViewController.swift */; };
 		01777AA91FCF6EF4002B95D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01777AA81FCF6EF4002B95D4 /* Assets.xcassets */; };
 		01777AAC1FCF6EF4002B95D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01777AAA1FCF6EF4002B95D4 /* LaunchScreen.storyboard */; };
 		01777AB71FCF6EF4002B95D4 /* fundu_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01777AB61FCF6EF4002B95D4 /* fundu_Tests.swift */; };
 		01777AC21FCF6EF4002B95D4 /* fundu_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01777AC11FCF6EF4002B95D4 /* fundu_UITests.swift */; };
+		018502BF1FD315F000469725 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018502BE1FD315F000469725 /* DashboardViewController.swift */; };
+		018502C01FD315F000469725 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018502BE1FD315F000469725 /* DashboardViewController.swift */; };
+		018502C11FD315F000469725 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018502BE1FD315F000469725 /* DashboardViewController.swift */; };
+		018502CB1FD3208200469725 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 018502CA1FD3208200469725 /* fonts */; };
+		01B48E641FD3234A00075481 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 018502CA1FD3208200469725 /* fonts */; };
+		01B48E651FD3234B00075481 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 018502CA1FD3208200469725 /* fonts */; };
 		3E553D48C555732CDF31F723 /* Pods_fundu_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55BD9E09721204BF15C2B99 /* Pods_fundu_.framework */; };
 		B9860A1894F0D6516113A318 /* Pods_fundu_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029A51EFFC1DC948FCFEECB4 /* Pods_fundu_Tests.framework */; };
 		C2775C663ACC39419B213A7E /* Pods_fundu_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B456085D1F2882564EE697 /* Pods_fundu_UITests.framework */; };
@@ -39,7 +42,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		015B17B31FCFB5B000617D22 /* DidactGothic-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DidactGothic-Regular.ttf"; sourceTree = "<group>"; };
 		01777A9E1FCF6EF4002B95D4 /* fundü.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fundü.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01777AA11FCF6EF4002B95D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01777AA31FCF6EF4002B95D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +54,8 @@
 		01777ABD1FCF6EF4002B95D4 /* fundüUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "fundüUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01777AC11FCF6EF4002B95D4 /* fundu_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fundu_UITests.swift; sourceTree = "<group>"; };
 		01777AC31FCF6EF4002B95D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		018502BE1FD315F000469725 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		018502CA1FD3208200469725 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		029A51EFFC1DC948FCFEECB4 /* Pods_fundu_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fundu_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B456085D1F2882564EE697 /* Pods_fundu_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fundu_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		102A0A5BDD789BEA9F6B8F93 /* Pods-fundüTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fundüTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-fundüTests/Pods-fundüTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 		01777A951FCF6EF4002B95D4 = {
 			isa = PBXGroup;
 			children = (
+				018502CA1FD3208200469725 /* fonts */,
 				01777AA01FCF6EF4002B95D4 /* fundü */,
 				01777AB51FCF6EF4002B95D4 /* fundüTests */,
 				01777AC01FCF6EF4002B95D4 /* fundüUITests */,
@@ -116,9 +121,9 @@
 		01777AA01FCF6EF4002B95D4 /* fundü */ = {
 			isa = PBXGroup;
 			children = (
-				015B17B31FCFB5B000617D22 /* DidactGothic-Regular.ttf */,
 				01777AA11FCF6EF4002B95D4 /* AppDelegate.swift */,
 				01777AA31FCF6EF4002B95D4 /* ViewController.swift */,
+				018502BE1FD315F000469725 /* DashboardViewController.swift */,
 				01777AA81FCF6EF4002B95D4 /* Assets.xcassets */,
 				01777AAA1FCF6EF4002B95D4 /* LaunchScreen.storyboard */,
 				01777AAD1FCF6EF4002B95D4 /* Info.plist */,
@@ -283,9 +288,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				018502CB1FD3208200469725 /* fonts in Resources */,
 				01777AAC1FCF6EF4002B95D4 /* LaunchScreen.storyboard in Resources */,
 				01777AA91FCF6EF4002B95D4 /* Assets.xcassets in Resources */,
-				015B17B41FCFB5B000617D22 /* DidactGothic-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,7 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				015B17B51FCFB5B000617D22 /* DidactGothic-Regular.ttf in Resources */,
+				01B48E641FD3234A00075481 /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +306,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				015B17B61FCFB5B000617D22 /* DidactGothic-Regular.ttf in Resources */,
+				01B48E651FD3234B00075481 /* fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +465,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01777AA41FCF6EF4002B95D4 /* ViewController.swift in Sources */,
+				018502BF1FD315F000469725 /* DashboardViewController.swift in Sources */,
 				01777AA21FCF6EF4002B95D4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01777AB71FCF6EF4002B95D4 /* fundu_Tests.swift in Sources */,
+				018502C01FD315F000469725 /* DashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01777AC21FCF6EF4002B95D4 /* fundu_UITests.swift in Sources */,
+				018502C11FD315F000469725 /* DashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
