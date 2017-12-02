@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         
         //create new instance of view controller
-        let loginViewController = ViewController()
+        let loginViewController = AuthViewController()
         
         //set initial VC to our instance
         window?.rootViewController = loginViewController

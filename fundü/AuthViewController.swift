@@ -8,12 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+
+class AuthViewController: UIViewController {
     var titleLabel: UILabel!
     var mottoLabel: UILabel!
     var usernameField: UITextField!
     var passwordField: UITextField!
     var loginButton: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,8 +96,11 @@ class ViewController: UIViewController {
             //authenicate user
             
             //if authenticated, segue to dashboard
-            let dashViewController = DashboardViewController()
-            dashViewController.username = usernameField.text
+            if(true){
+                let dashViewController = DashboardViewController()
+                dashViewController.username = usernameField.text
+                present(dashViewController, animated: true, completion: nil)
+            }
         }
     }
 }
