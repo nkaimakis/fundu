@@ -16,6 +16,7 @@ class DashboardViewController: UITabBarController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0)
         setTabBarController()
+        
     }
 
     override func didReceiveMemoryWarning() {

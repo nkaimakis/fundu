@@ -1,3 +1,4 @@
+//ES6 Destructuring, didn't know you destructure a constructor from an object
 const { Client } = require('pg')
 const express = require('express')
 const crypto = require('crypto')
@@ -5,6 +6,7 @@ const parser = require('body-parser')
 const jwt = require('jsonwebtoken')
 const fs = require('fs')
 
+//Global environment object, get context and listen
 const db = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
@@ -31,9 +33,12 @@ function get_token(payload) {
   return jwt.sign(payload, get_secret())
 }
 
+//If routes become complex we can modularize into files and create routers
+//which are in turn exported and 'used' by the main express app
 app.post('/login', function(request, response) {
   let email = request.body.email
   let password = hash(request.body.password, get_secret())
+  //Dollar signs are argument interpolation
   let query = 'select id from users where email=$1 and password=$2'
   db.query(query, [email, password], (err, res) => {
     if (err) {
