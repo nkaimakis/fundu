@@ -20,6 +20,9 @@
 		01B48E641FD3234A00075481 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 018502CA1FD3208200469725 /* fonts */; };
 		01B48E651FD3234B00075481 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 018502CA1FD3208200469725 /* fonts */; };
 		3E553D48C555732CDF31F723 /* Pods_fundu_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55BD9E09721204BF15C2B99 /* Pods_fundu_.framework */; };
+		A024BC7B1FD385970074A7FB /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024BC7A1FD385970074A7FB /* FeedViewController.swift */; };
+		A024BC7D1FD385A50074A7FB /* SocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024BC7C1FD385A50074A7FB /* SocialViewController.swift */; };
+		A024BC7F1FD393CD0074A7FB /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A024BC7E1FD393CD0074A7FB /* MessagesViewController.swift */; };
 		B9860A1894F0D6516113A318 /* Pods_fundu_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029A51EFFC1DC948FCFEECB4 /* Pods_fundu_Tests.framework */; };
 		C2775C663ACC39419B213A7E /* Pods_fundu_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B456085D1F2882564EE697 /* Pods_fundu_UITests.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +66,9 @@
 		46B116445E007546AF689FFD /* Pods-fundüUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fundüUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-fundüUITests/Pods-fundüUITests.release.xcconfig"; sourceTree = "<group>"; };
 		721AE291E785E1ED7EECFB36 /* Pods-fundü.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fundü.release.xcconfig"; path = "Pods/Target Support Files/Pods-fundü/Pods-fundü.release.xcconfig"; sourceTree = "<group>"; };
 		8776C81688BA6A567F7DDDAB /* Pods-fundüTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fundüTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fundüTests/Pods-fundüTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A024BC7A1FD385970074A7FB /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		A024BC7C1FD385A50074A7FB /* SocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialViewController.swift; sourceTree = "<group>"; };
+		A024BC7E1FD393CD0074A7FB /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		C55BD9E09721204BF15C2B99 /* Pods_fundu_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fundu_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB29697553143B8F7C26251 /* Pods-fundüUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fundüUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fundüUITests/Pods-fundüUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +130,9 @@
 				01777AA11FCF6EF4002B95D4 /* AppDelegate.swift */,
 				01777AA31FCF6EF4002B95D4 /* AuthViewController.swift */,
 				018502BE1FD315F000469725 /* DashboardViewController.swift */,
+				A024BC7A1FD385970074A7FB /* FeedViewController.swift */,
+				A024BC7C1FD385A50074A7FB /* SocialViewController.swift */,
+				A024BC7E1FD393CD0074A7FB /* MessagesViewController.swift */,
 				01777AA81FCF6EF4002B95D4 /* Assets.xcassets */,
 				01777AAA1FCF6EF4002B95D4 /* LaunchScreen.storyboard */,
 				01777AAD1FCF6EF4002B95D4 /* Info.plist */,
@@ -464,8 +473,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A024BC7F1FD393CD0074A7FB /* MessagesViewController.swift in Sources */,
+				A024BC7D1FD385A50074A7FB /* SocialViewController.swift in Sources */,
 				01777AA41FCF6EF4002B95D4 /* AuthViewController.swift in Sources */,
 				018502BF1FD315F000469725 /* DashboardViewController.swift in Sources */,
+				A024BC7B1FD385970074A7FB /* FeedViewController.swift in Sources */,
 				01777AA21FCF6EF4002B95D4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
