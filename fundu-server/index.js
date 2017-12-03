@@ -1,5 +1,9 @@
 const { Client } = require('pg')
 const express = require('express')
+const crypto = require('crypto')
+const parser = require('body-parser')
+const jwt = require('jsonwebtoken')
+const fs = require('fs')
 
 const db = new Client({
   connectionString: process.env.DATABASE_URL,
@@ -7,18 +11,53 @@ const db = new Client({
 })
 
 const app = express()
+app.use(parser.json())
 app.listen(process.env.PORT)
 
 db.connect()
 
-/*db.query('', (err, res) => {
-  if (err) throw err
-  for (let row of res.rows) {
-    console.log(JSON.stringify(row))
-  }
-  db.end()
-})*/
+function hash(text, salt) {
+  const algo = crypto.createHash('sha512')
+  algo.update(text)
+  algo.update(salt)
+  return algo.digest('hex')
+}
 
-app.get("/hello", function(req, res) {
-  res.status(200).json({hi: 2})
+function get_secret() {
+  return fs.readFileSync('private.key')
+}
+
+function get_token(payload) {
+  return jwt.sign(payload, get_secret())
+}
+
+app.post('/login', function(request, response) {
+  let email = request.body.email
+  let password = hash(request.body.password, get_secret())
+  let query = 'select id from users where email=$1 and password=$2'
+  db.query(query, [email, password], (err, res) => {
+    if (err) {
+      console.log(err)
+      return
+    }
+    if (res.rows.length > 0) {
+      let token = get_token({id: res.rows[0].id})
+      response.status(200).json({session: token})
+    } else {
+      response.status(200).json({session: ''})
+    }
+  })
+})
+
+app.post('/register', function(request, response) {
+  let email = request.body.email
+  let password = hash(request.body.password, get_secret())
+  let query = 'insert into users (email, password) values ($1, $2)'
+  db.query(query, [email, password], (err, res) => {
+    if (err) {
+      console.log(err)
+      response.status(200).json({success: false})
+    }
+    response.status(200).json({success: true})
+  })
 })
