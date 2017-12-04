@@ -62,7 +62,28 @@ app.post('/register', function(request, response) {
     if (err) {
       console.log(err)
       response.status(200).json({success: false})
+    } else {
+      response.status(200).json({success: true})
     }
-    response.status(200).json({success: true})
+  })
+})
+
+app.get('/portfolio/:session', function(request, response) {
+  let session = request.params.session
+  jwt.verify(session, get_secret(), (err, decoded) => {
+    if (err) {
+      console.log(err)
+      response.status(200).json({positions: null})
+    } else {
+      let id = decoded.id
+      let query = 'select * from portfolios where user_id=$1 and position_end is null'
+      db.query(query, [id], (err, res) => {
+        let positions = []
+        for (row of res.rows) {
+          positions.push({ticker: row.ticker, position: row.position})
+        }
+        response.status(200).json({positions: positions})
+      })
+    }
   })
 })
