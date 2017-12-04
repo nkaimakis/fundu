@@ -10,11 +10,12 @@ import UIKit
 
 class SocialViewController: UIViewController {
     var username:String!
+    var delegate: CenterViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Social"
-        self.view.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0)
+        self.view.backgroundColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
         setNavButtons()
         // Do any additional setup after loading the view.
     }
@@ -31,11 +32,10 @@ class SocialViewController: UIViewController {
         
         self.navigationItem.setLeftBarButton(leftBarButton, animated: true)
         self.navigationItem.setRightBarButton(rightBarButton, animated: true)
-        
     }
     
     @objc func showMenu(){
-        
+        delegate?.toggleLeftPanel?()
     }
     
     @objc func showMessages(){
@@ -43,3 +43,4 @@ class SocialViewController: UIViewController {
     }
 
 }
+

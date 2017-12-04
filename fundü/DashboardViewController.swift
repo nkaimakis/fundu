@@ -10,7 +10,7 @@ import UIKit
 
 class DashboardViewController: UITabBarController {
     var username: String!
-    
+    var token:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,17 +24,16 @@ class DashboardViewController: UITabBarController {
     }
     
     func setTabBarController(){
-        let feed = FeedViewController()
-        feed.username = username
+        let feed = FeedContainerViewController()
+        feed.token = token
         feed.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "feed"), tag: 0)
         
-        let social = SocialViewController()
-        social.username = username
+        let social = SocialContainerViewController()
+        social.token = token
         social.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "social"), tag: 1)
         
-        let controllers = [feed, social]
-        self.viewControllers = controllers.map { UINavigationController(rootViewController: $0)}
+        let controllers = [feed,social]
+        self.viewControllers = controllers
     }
-
 
 }
