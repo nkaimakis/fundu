@@ -10,11 +10,12 @@ import UIKit
 
 class FeedViewController: UIViewController {
     var username:String!
+    var delegate: CenterViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Feed"
-        self.view.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0)
+        self.view.backgroundColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:1.0)
         
         setNavButtons()
         // Do any additional setup after loading the view.
@@ -36,7 +37,7 @@ class FeedViewController: UIViewController {
     }
     
     @objc func showMenu(){
-        
+        delegate?.toggleLeftPanel?()
     }
     
     @objc func showMessages(){
