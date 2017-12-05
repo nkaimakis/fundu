@@ -16,7 +16,11 @@ class SlideMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        createTableView()
+        setConstraints()
+    }
+    
+    func createTableView(){
         let barHeight = UIApplication.shared.statusBarFrame.size.height
         let displayWidth = self.view.frame.width
         let displayHeight = self.view.frame.height
@@ -30,10 +34,18 @@ class SlideMenuViewController: UIViewController {
         tableView.delegate = self
         tableView.backgroundColor = UIColor.gray
         self.view.addSubview(tableView)
+    
+    }
+    
+    func setConstraints(){
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 
-
 }
+
 
 extension SlideMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
