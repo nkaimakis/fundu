@@ -68,7 +68,7 @@ app.post('/register', function(request, response) {
   })
 })
 
-app.get('/portfolio/:session', function(request, response) {
+app.get('/portfolio/:session/:group', function(request, response) {
   let session = request.params.session
   jwt.verify(session, get_secret(), (err, decoded) => {
     if (err) {
@@ -76,13 +76,24 @@ app.get('/portfolio/:session', function(request, response) {
       response.status(200).json({positions: null})
     } else {
       let id = decoded.id
-      let query = 'select * from portfolios where user_id=$1 and position_end is null'
-      db.query(query, [id], (err, res) => {
-        let positions = []
-        for (row of res.rows) {
-          positions.push({ticker: row.ticker, position: row.position})
+      let group = request.params.group
+      let query = ' \
+        select * from portfolios join users_in_groups \
+        on users_in_groups.user_id=$1 and users_in_groups.group_id=$2 \
+        where portfolios.group_id=users_in_groups.group_id \
+        and position_end is null \
+      '
+      db.query(query, [id, group], (err, res) => {
+        if (err) {
+          console.log(err)
+          response.status(200).json({positions: null})
+        } else {
+          let positions = []
+          for (row of res.rows) {
+            positions.push({ticker: row.ticker, position: row.position})
+          }
+          response.status(200).json({positions: positions})
         }
-        response.status(200).json({positions: positions})
       })
     }
   })

@@ -32,6 +32,8 @@
 		A0F140021FD68BC70087CB01 /* DashboardContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F140011FD68BC70087CB01 /* DashboardContainerViewController.swift */; };
 		B9860A1894F0D6516113A318 /* Pods_fundu_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029A51EFFC1DC948FCFEECB4 /* Pods_fundu_Tests.framework */; };
 		C2775C663ACC39419B213A7E /* Pods_fundu_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B456085D1F2882564EE697 /* Pods_fundu_UITests.framework */; };
+		CED57D9D1FD7625A004360FB /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED57D9B1FD76259004360FB /* ChatViewController.swift */; };
+		CED57D9E1FD7625A004360FB /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED57D9C1FD7625A004360FB /* GroupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,8 @@
 		A0F13FFD1FD62A9B0087CB01 /* SlideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuCell.swift; sourceTree = "<group>"; };
 		A0F140011FD68BC70087CB01 /* DashboardContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardContainerViewController.swift; sourceTree = "<group>"; };
 		C55BD9E09721204BF15C2B99 /* Pods_fundu_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fundu_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CED57D9B1FD76259004360FB /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		CED57D9C1FD7625A004360FB /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		EFB29697553143B8F7C26251 /* Pods-fundüUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fundüUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fundüUITests/Pods-fundüUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,6 +143,8 @@
 		01777AA01FCF6EF4002B95D4 /* fundü */ = {
 			isa = PBXGroup;
 			children = (
+				CED57D9B1FD76259004360FB /* ChatViewController.swift */,
+				CED57D9C1FD7625A004360FB /* GroupViewController.swift */,
 				01777AA11FCF6EF4002B95D4 /* AppDelegate.swift */,
 				01777AA31FCF6EF4002B95D4 /* AuthViewController.swift */,
 				A0F140011FD68BC70087CB01 /* DashboardContainerViewController.swift */,
@@ -500,6 +506,8 @@
 				A0F13FFE1FD62A9B0087CB01 /* SlideMenuCell.swift in Sources */,
 				01777AA21FCF6EF4002B95D4 /* AppDelegate.swift in Sources */,
 				A024BC851FD49F490074A7FB /* CenterViewControllerDelegate.swift in Sources */,
+				CED57D9E1FD7625A004360FB /* GroupViewController.swift in Sources */,
+				CED57D9D1FD7625A004360FB /* ChatViewController.swift in Sources */,
 				A0F140021FD68BC70087CB01 /* DashboardContainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

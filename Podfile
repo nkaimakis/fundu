@@ -17,4 +17,6 @@ target 'fundü' do
     # Pods for testing
   end
 
+  pod 'SendBirdSDK'
+
 end
