@@ -83,6 +83,7 @@ class ProfileViewController: UIViewController {
     }
     func renderPortfolio(){
         //create view for graphs/performance?
+        //alpha vantage API key: T94MDXP24IHU4PMF
         
         
     }
@@ -102,6 +103,6 @@ class ProfileViewController: UIViewController {
     @objc func backAction(_ sender: UIButton) {
         let dashViewController = DashboardContainerViewController()
         dashViewController.username = self.username
-        present(dashViewController, animated: false, completion: nil)
+        present(dashViewController, animated: true, completion: nil)
     }
 }
