@@ -9,15 +9,27 @@
 import UIKit
 
 class SlideMenuViewController: UIViewController {
-    var tableView = UITableView()
+    var tableView:UITableView!
     //Some kind of container for the options
-    var menuOptions = [Int]()
+    var menuOptions = ["Profile", "Groups", "Settings", "Logout"]
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let barHeight = UIApplication.shared.statusBarFrame.size.height
+        let displayWidth = self.view.frame.width
+        let displayHeight = self.view.frame.height
+        
+        tableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
+        tableView.register(SlideMenuCell.self, forCellReuseIdentifier: "slideMenuCell")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.backgroundColor = UIColor.gray
+        self.view.addSubview(tableView)
     }
 
 
@@ -27,17 +39,24 @@ extension SlideMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 100
+//    }
 }
 
 extension SlideMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //Placeholder
-        return 1
+        return menuOptions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //Placeholder
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "slideMenuCell") as! SlideMenuCell
+        cell.setupViews(text:menuOptions[indexPath.row])
         return cell
     }
 }

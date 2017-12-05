@@ -15,8 +15,7 @@ class SocialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Social"
-        self.view.backgroundColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
-        setNavButtons()
+        self.view.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0)
         // Do any additional setup after loading the view.
     }
 
