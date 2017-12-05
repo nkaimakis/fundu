@@ -10,11 +10,12 @@ import UIKit
 
 class FeedViewController: UIViewController {
     var username:String!
+    var token:String!
     var delegate: CenterViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Feed"
+        delegate = (self.parent?.parent?.parent as! CenterViewControllerDelegate)
         self.view.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0)
         
         setNavButtons()
@@ -26,7 +27,6 @@ class FeedViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     func setNavButtons(){
         let leftBarButton = UIBarButtonItem(image: UIImage(named: "menu") , style: UIBarButtonItemStyle.plain, target: self, action: #selector(showMenu))
         let rightBarButton = UIBarButtonItem(image: UIImage(named: "messages") , style: UIBarButtonItemStyle.plain, target: self, action: #selector(showMessages))

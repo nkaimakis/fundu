@@ -28,6 +28,7 @@
 		A0D20A451FD4DAF600A52801 /* FeedContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D20A441FD4DAF600A52801 /* FeedContainerViewController.swift */; };
 		A0D20A471FD4DC8B00A52801 /* SocialContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D20A461FD4DC8B00A52801 /* SocialContainerViewController.swift */; };
 		A0F13FFE1FD62A9B0087CB01 /* SlideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F13FFD1FD62A9B0087CB01 /* SlideMenuCell.swift */; };
+		A0F140021FD68BC70087CB01 /* DashboardContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F140011FD68BC70087CB01 /* DashboardContainerViewController.swift */; };
 		B9860A1894F0D6516113A318 /* Pods_fundu_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029A51EFFC1DC948FCFEECB4 /* Pods_fundu_Tests.framework */; };
 		C2775C663ACC39419B213A7E /* Pods_fundu_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B456085D1F2882564EE697 /* Pods_fundu_UITests.framework */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		A0D20A441FD4DAF600A52801 /* FeedContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedContainerViewController.swift; sourceTree = "<group>"; };
 		A0D20A461FD4DC8B00A52801 /* SocialContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialContainerViewController.swift; sourceTree = "<group>"; };
 		A0F13FFD1FD62A9B0087CB01 /* SlideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuCell.swift; sourceTree = "<group>"; };
+		A0F140011FD68BC70087CB01 /* DashboardContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardContainerViewController.swift; sourceTree = "<group>"; };
 		C55BD9E09721204BF15C2B99 /* Pods_fundu_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fundu_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB29697553143B8F7C26251 /* Pods-fundüUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fundüUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fundüUITests/Pods-fundüUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +143,7 @@
 				A0D20A441FD4DAF600A52801 /* FeedContainerViewController.swift */,
 				01777AA11FCF6EF4002B95D4 /* AppDelegate.swift */,
 				01777AA31FCF6EF4002B95D4 /* AuthViewController.swift */,
+				A0F140011FD68BC70087CB01 /* DashboardContainerViewController.swift */,
 				A0F13FFD1FD62A9B0087CB01 /* SlideMenuCell.swift */,
 				018502BE1FD315F000469725 /* DashboardViewController.swift */,
 				A024BC801FD49EEB0074A7FB /* SlideMenuViewController.swift */,
@@ -499,6 +502,7 @@
 				A0F13FFE1FD62A9B0087CB01 /* SlideMenuCell.swift in Sources */,
 				01777AA21FCF6EF4002B95D4 /* AppDelegate.swift in Sources */,
 				A024BC851FD49F490074A7FB /* CenterViewControllerDelegate.swift in Sources */,
+				A0F140021FD68BC70087CB01 /* DashboardContainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

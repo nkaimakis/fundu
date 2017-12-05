@@ -97,7 +97,7 @@ class AuthViewController: UIViewController {
             
             //if authenticated, segue to dashboard
             if(true){
-                let dashViewController = DashboardViewController()
+                let dashViewController = DashboardContainerViewController()
                 dashViewController.username = usernameField.text
                 present(dashViewController, animated: true, completion: nil)
             }
