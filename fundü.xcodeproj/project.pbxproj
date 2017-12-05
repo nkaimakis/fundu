@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		014D48491FD7505400EE532B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014D48481FD7505300EE532B /* ProfileViewController.swift */; };
+		014D484A1FD7505400EE532B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014D48481FD7505300EE532B /* ProfileViewController.swift */; };
+		014D484B1FD7505400EE532B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014D48481FD7505300EE532B /* ProfileViewController.swift */; };
 		01777AA21FCF6EF4002B95D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01777AA11FCF6EF4002B95D4 /* AppDelegate.swift */; };
 		01777AA41FCF6EF4002B95D4 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01777AA31FCF6EF4002B95D4 /* AuthViewController.swift */; };
 		01777AA91FCF6EF4002B95D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01777AA81FCF6EF4002B95D4 /* Assets.xcassets */; };
@@ -49,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		014D48481FD7505300EE532B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		01777A9E1FCF6EF4002B95D4 /* fundü.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fundü.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01777AA11FCF6EF4002B95D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01777AA31FCF6EF4002B95D4 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				01777AA31FCF6EF4002B95D4 /* AuthViewController.swift */,
 				A0F140011FD68BC70087CB01 /* DashboardContainerViewController.swift */,
 				A0F13FFD1FD62A9B0087CB01 /* SlideMenuCell.swift */,
+				014D48481FD7505300EE532B /* ProfileViewController.swift */,
 				018502BE1FD315F000469725 /* DashboardViewController.swift */,
 				A024BC801FD49EEB0074A7FB /* SlideMenuViewController.swift */,
 				A024BC841FD49F490074A7FB /* CenterViewControllerDelegate.swift */,
@@ -491,6 +496,7 @@
 				018502BF1FD315F000469725 /* DashboardViewController.swift in Sources */,
 				A024BC811FD49EEB0074A7FB /* SlideMenuViewController.swift in Sources */,
 				A024BC7B1FD385970074A7FB /* FeedViewController.swift in Sources */,
+				014D48491FD7505400EE532B /* ProfileViewController.swift in Sources */,
 				A0F13FFE1FD62A9B0087CB01 /* SlideMenuCell.swift in Sources */,
 				01777AA21FCF6EF4002B95D4 /* AppDelegate.swift in Sources */,
 				A024BC851FD49F490074A7FB /* CenterViewControllerDelegate.swift in Sources */,
@@ -502,6 +508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				014D484A1FD7505400EE532B /* ProfileViewController.swift in Sources */,
 				01777AB71FCF6EF4002B95D4 /* fundu_Tests.swift in Sources */,
 				018502C01FD315F000469725 /* DashboardViewController.swift in Sources */,
 			);
@@ -511,6 +518,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				014D484B1FD7505400EE532B /* ProfileViewController.swift in Sources */,
 				01777AC21FCF6EF4002B95D4 /* fundu_UITests.swift in Sources */,
 				018502C11FD315F000469725 /* DashboardViewController.swift in Sources */,
 			);

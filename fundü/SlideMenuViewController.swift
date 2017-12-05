@@ -12,6 +12,7 @@ class SlideMenuViewController: UIViewController {
     var tableView:UITableView!
     //Some kind of container for the options
     var menuOptions = ["Profile", "Groups", "Settings", "Logout"]
+    var username: String!
     
 
     override func viewDidLoad() {
@@ -31,14 +32,28 @@ class SlideMenuViewController: UIViewController {
         tableView.backgroundColor = UIColor.gray
         self.view.addSubview(tableView)
     }
-
-
 }
 
 extension SlideMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //define actions for various buttons
+        switch indexPath.row{
+        case 0:
+            let profViewController = ProfileViewController()
+            profViewController.username = self.username
+            present(profViewController, animated: true, completion: nil)
+        case 1: //groups
+            break
+        case 2: //settings
+            break
+        case 3: //logout
+            break
+        default:
+            print("selected option not implemented")
+        }
         
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

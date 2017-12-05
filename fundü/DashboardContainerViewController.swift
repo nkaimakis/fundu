@@ -59,6 +59,7 @@ extension DashboardContainerViewController: CenterViewControllerDelegate {
         
         //Initailize members and the nset
         let vc = SlideMenuViewController()
+        vc.username = self.username
         addChildSidePanelController(vc)
         leftViewController = vc
         
