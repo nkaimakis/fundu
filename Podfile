@@ -18,5 +18,6 @@ target 'fundü' do
   end
 
   pod 'SendBirdSDK'
+  pod 'Charts'
 
 end

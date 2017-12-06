@@ -313,7 +313,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 01777A991FCF6EF4002B95D4 /* Build configuration list for PBXProject "fundü" */;
+			buildConfigurationList = 01777A991FCF6EF4002B95D4 /* Build configuration list for PBXProject "fundü" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -468,9 +468,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-fundü/Pods-fundü-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -791,7 +794,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		01777A991FCF6EF4002B95D4 /* Build configuration list for PBXProject "fundü" */ = {
+		01777A991FCF6EF4002B95D4 /* Build configuration list for PBXProject "fundü" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01777AC41FCF6EF4002B95D4 /* Debug */,
