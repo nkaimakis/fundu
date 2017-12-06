@@ -12,6 +12,7 @@
  */
 
 import UIKit
+import Charts
 
 extension UIImageView {
     //round edges of profile photo
@@ -82,8 +83,7 @@ class ProfileViewController: UIViewController {
         self.view.addSubview(self.groupsLabel)
     }
     func renderPortfolio(){
-        //create view for graphs/performance?
-        //alpha vantage API key: T94MDXP24IHU4PMF
+        //create view for graphs/performance
         
         
     }
