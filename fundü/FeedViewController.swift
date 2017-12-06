@@ -94,8 +94,9 @@ class FeedViewController: UIViewController {
 }
 
 extension FeedViewController: UITableViewDelegate {
+    //Prevent highlight of cell after tap
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -112,12 +113,12 @@ extension FeedViewController: UITableViewDataSource {
         if(indexPath.row == 0){
             let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCollectionTableViewCell") as! FeedCollectionTableViewCell
             cell.setupViews(stats:dailyStats)
-            cell.backgroundColor = UIColor.green
+            cell.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell") as! FeedTableViewCell
             cell.setupViews(feedEvent:feedEvents[indexPath.row - 1])
-            cell.backgroundColor = UIColor.yellow
+            cell.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0)
             return cell
         }
     }

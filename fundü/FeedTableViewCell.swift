@@ -10,6 +10,9 @@ import UIKit
 
 class FeedTableViewCell: UITableViewCell {
     var event:FeedEvent!
+    var eventImage:UIImageView!
+    var time:UILabel!
+    var eventDescription:UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,11 +25,55 @@ class FeedTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func createImage(){
+        eventImage = StatImageView(image: UIImage(named:event.image))
+        eventImage.frame = CGRect(x: 0, y: 0, width: contentView.bounds.height * 0.5, height: contentView.bounds.height * 0.5)
+        eventImage.contentMode = UIViewContentMode.scaleAspectFit
+        eventImage.clipsToBounds = true
+        eventImage.layer.masksToBounds = true
+        eventImage.translatesAutoresizingMaskIntoConstraints = false
+        eventImage.layer.borderWidth = 1
+        eventImage.layer.borderColor = UIColor.black.cgColor
+        eventImage.backgroundColor = UIColor.white
+        contentView.addSubview(eventImage)
+    }
+    
+    func createTimeLabel(){
+        time = UILabel()
+        time.text = event.time
+        time.textColor = UIColor.white
+        time.translatesAutoresizingMaskIntoConstraints = false
+        time.font = UIFont.boldSystemFont(ofSize: 8)
+        time.numberOfLines = 0
+        contentView.addSubview(time)
+    }
+    
+    func createDescriptionLabel(){
+        eventDescription = UILabel()
+        eventDescription.text = event.message
+        eventDescription.textColor = UIColor.white
+        eventDescription.translatesAutoresizingMaskIntoConstraints = false
+        eventDescription.font = UIFont.boldSystemFont(ofSize: 14)
+        eventDescription.numberOfLines = 0
+        contentView.addSubview(eventDescription)
+    }
+    
+    func setConstraints(){
+        let margins = contentView.layoutMarginsGuide
+        eventImage.centerYAnchor.constraint(equalTo: margins.centerYAnchor).isActive = true
+        eventImage.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 1.2).isActive = true
+        time.centerXAnchor.constraint(equalTo: eventImage.centerXAnchor).isActive = true
+        time.topAnchor.constraintEqualToSystemSpacingBelow(eventImage.bottomAnchor, multiplier: 1.1).isActive = true
+        eventDescription.centerYAnchor.constraint(equalTo: eventImage.centerYAnchor).isActive = true
+        eventDescription.leadingAnchor.constraintEqualToSystemSpacingAfter(eventImage.trailingAnchor, multiplier: 1.1).isActive = true
+    }
+    
     func setupViews(feedEvent:FeedEvent){
-        //contentView.backgroundColor = UIColor.gray
         event = feedEvent
-        //        createTitleLabel()
-        //        setConstraints()
+        createTimeLabel()
+        createDescriptionLabel()
+        createImage()
+       // setConstraints()
     }
 
 }

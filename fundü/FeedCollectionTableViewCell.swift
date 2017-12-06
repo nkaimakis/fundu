@@ -31,18 +31,16 @@ class FeedCollectionTableViewCell: UITableViewCell {
         collection.dataSource = self
         collection.delegate = self
         collection.translatesAutoresizingMaskIntoConstraints = false
-        collection.backgroundColor = UIColor.purple
+        collection.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0)
         contentView.addSubview(collection)
     }
     
     func setConstraints(){
         let margins = contentView.layoutMarginsGuide
-        collection.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
+        collection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         collection.topAnchor.constraint(equalTo: margins.topAnchor).isActive = true
         collection.bottomAnchor.constraint(equalTo: margins.bottomAnchor).isActive = true
-        collection.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
-        collection.heightAnchor.constraint(equalToConstant: contentView.bounds.height).isActive = true
-        collection.widthAnchor.constraint(equalToConstant: contentView.bounds.width).isActive = true
+        collection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
     }
     
     func setupViews(stats:[DailyStat]){
@@ -65,7 +63,7 @@ extension FeedCollectionTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DailyStat", for: indexPath) as! DashboardCollectionViewCell
-        cell.backgroundColor = UIColor.red
+        cell.backgroundColor = UIColor.gray
         cell.setupViews(data:collectionOfStats[indexPath.row])
         return cell
     }
