@@ -21,7 +21,7 @@ class ChatViewController: UITableViewController, SBDChannelDelegate {
         self.setNavButtons()
         setupChatCell()
         SBDMain.add(self as SBDChannelDelegate, identifier: unique_identifier)
-        if SBDMain.getConnectState() != SBDWebSocketConnectionState.SBDWebSocketOpen {
+        if SBDMain.getConnectState() != SBDWebSocketConnectionState.open {
             SBDMain.connect(withUserId: username) { (user, error) in
                 if error != nil {
                     print(error.debugDescription)
