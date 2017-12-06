@@ -9,7 +9,8 @@
 import UIKit
 
 class FeedTableViewCell: UITableViewCell {
-
+    var event:FeedEvent!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +20,13 @@ class FeedTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setupViews(feedEvent:FeedEvent){
+        //contentView.backgroundColor = UIColor.gray
+        event = feedEvent
+        //        createTitleLabel()
+        //        setConstraints()
     }
 
 }

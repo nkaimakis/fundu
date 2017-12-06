@@ -24,24 +24,29 @@ class FeedViewController: UIViewController {
         dailyStats = getDailyStats()
         feedEvents = getSummaryFeedEvents()
         setNavButtons()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        createTableView()
+        setConstraints()
     }
     
     func getDailyStats() -> [DailyStat] {
         //Stubbing this for sake of the demo
-        let stats = [DailyStat]()
-        
+        var stats = [DailyStat]()
+        stats = [DailyStat(image: "votes", message: "3 actions waiting for your vote!"),
+                 DailyStat(image: "earnings", message: "You've earned $57.73 across all groups today!"),
+                 DailyStat(image: "increase", message: "You're AAPL shares in RainMakers have increase 3% today!"),
+                 DailyStat(image: "challenge", message: "You're the top earner among your friends this week."),
+                 DailyStat(image: "newChallenges", message: "Check social for new challenges, complete them first for extra points!")]
         return stats
     }
     
     func getSummaryFeedEvents() -> [FeedEvent]{
         //Stubbing this for sake of the demo
-        let events = [FeedEvent]()
-        
+        var events = [FeedEvent]()
+        events = [FeedEvent(image: "user1", message: "Jordan Coppert just passed you on the leaderboards! Complete more challenges to catch back up.", time: "now"),
+                  FeedEvent(image: "company1", message: "GOOGL announces acquisition of larger augmented reality firm.", time: "3 hrs"),
+                  FeedEvent(image: "user2", message: "Myrl Marmarelis just joined your group RainMakers, send a message to welcome them!", time: "1 hr"),
+                  FeedEvent(image: "user3", message: "Nick Kaimakis just purchased AAPL at $27.59 a share.", time: "Yesterday"),
+                  FeedEvent(image: "company2", message: "TSLA stock up 7% after semi announcement, buy now!", time: "6 hrs")]
         return events
     }
     
@@ -60,15 +65,15 @@ class FeedViewController: UIViewController {
         let displayHeight = self.view.frame.height
         
         tableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
-        tableView.register(SlideMenuCell.self, forCellReuseIdentifier: "slideMenuCell")
+        tableView.register(FeedCollectionTableViewCell.self, forCellReuseIdentifier: "FeedCollectionTableViewCell")
+        tableView.register(FeedTableViewCell.self, forCellReuseIdentifier: "FeedTableViewCell")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 100
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = UIColor.gray
+        tableView.backgroundColor = UIColor.blue
         self.view.addSubview(tableView)
-        
     }
     
     func setConstraints(){
@@ -92,6 +97,7 @@ extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -99,21 +105,30 @@ extension FeedViewController: UITableViewDelegate {
 
 extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //Placeholder
-        return 6
+        return feedEvents.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell:UITableViewCell
-        //Placeholder
         if(indexPath.row == 0){
-            cell = tableView.dequeueReusableCell(withIdentifier: "FeedCollectionTableViewCell") as! FeedCollectionTableViewCell
-//            cell.setupViews(text:menuOptions[indexPath.row])
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FeedCollectionTableViewCell") as! FeedCollectionTableViewCell
+            cell.setupViews(stats:dailyStats)
+            cell.backgroundColor = UIColor.green
+            return cell
         } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell") as! FeedTableViewCell
-//            cell.setupViews(text:menuOptions[indexPath.row])
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell") as! FeedTableViewCell
+            cell.setupViews(feedEvent:feedEvents[indexPath.row - 1])
+            cell.backgroundColor = UIColor.yellow
+            return cell
         }
-        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if(indexPath.row == 0) {
+            return 200
+        }
+        else {
+            return 100
+        }
     }
 }
 

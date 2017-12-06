@@ -30,6 +30,7 @@
 		A09B6CB51FD7322D00142E3C /* FeedCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09B6CB41FD7322D00142E3C /* FeedCollectionTableViewCell.swift */; };
 		A09B6CB71FD7330200142E3C /* DailyStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09B6CB61FD7330200142E3C /* DailyStat.swift */; };
 		A09B6CB91FD7330E00142E3C /* FeedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09B6CB81FD7330E00142E3C /* FeedEvent.swift */; };
+		A09B6CBB1FD7A6AA00142E3C /* StatImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09B6CBA1FD7A6AA00142E3C /* StatImageView.swift */; };
 		A0F13FFE1FD62A9B0087CB01 /* SlideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F13FFD1FD62A9B0087CB01 /* SlideMenuCell.swift */; };
 		A0F140021FD68BC70087CB01 /* DashboardContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F140011FD68BC70087CB01 /* DashboardContainerViewController.swift */; };
 		B9860A1894F0D6516113A318 /* Pods_fundu_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029A51EFFC1DC948FCFEECB4 /* Pods_fundu_Tests.framework */; };
@@ -85,6 +86,7 @@
 		A09B6CB41FD7322D00142E3C /* FeedCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		A09B6CB61FD7330200142E3C /* DailyStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyStat.swift; sourceTree = "<group>"; };
 		A09B6CB81FD7330E00142E3C /* FeedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedEvent.swift; sourceTree = "<group>"; };
+		A09B6CBA1FD7A6AA00142E3C /* StatImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatImageView.swift; sourceTree = "<group>"; };
 		A0F13FFD1FD62A9B0087CB01 /* SlideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuCell.swift; sourceTree = "<group>"; };
 		A0F140011FD68BC70087CB01 /* DashboardContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardContainerViewController.swift; sourceTree = "<group>"; };
 		C55BD9E09721204BF15C2B99 /* Pods_fundu_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fundu_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +165,7 @@
 				01777AA81FCF6EF4002B95D4 /* Assets.xcassets */,
 				01777AAA1FCF6EF4002B95D4 /* LaunchScreen.storyboard */,
 				01777AAD1FCF6EF4002B95D4 /* Info.plist */,
+				A09B6CBA1FD7A6AA00142E3C /* StatImageView.swift */,
 			);
 			path = "fundü";
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				A09B6CB91FD7330E00142E3C /* FeedEvent.swift in Sources */,
 				A024BC811FD49EEB0074A7FB /* SlideMenuViewController.swift in Sources */,
 				A024BC7B1FD385970074A7FB /* FeedViewController.swift in Sources */,
+				A09B6CBB1FD7A6AA00142E3C /* StatImageView.swift in Sources */,
 				A09B6CB71FD7330200142E3C /* DailyStat.swift in Sources */,
 				A0F13FFE1FD62A9B0087CB01 /* SlideMenuCell.swift in Sources */,
 				A09B6CB51FD7322D00142E3C /* FeedCollectionTableViewCell.swift in Sources */,

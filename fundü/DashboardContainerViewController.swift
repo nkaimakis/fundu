@@ -34,8 +34,8 @@ class DashboardContainerViewController: UIViewController {
         view.addSubview(centerViewController.view)
         addChildViewController(centerViewController)
         centerViewController.didMove(toParentViewController: self)
-         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
-        centerViewController.view.addGestureRecognizer(panGestureRecognizer)
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        //centerViewController.view.addGestureRecognizer(panGestureRecognizer)
     }
     
     
@@ -113,9 +113,7 @@ extension DashboardContainerViewController: UIGestureRecognizerDelegate {
     
     @objc func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
         let gestureIsDraggingFromLeftToRight = (recognizer.velocity(in: view).x > 0)
-        
         switch recognizer.state {
-            
         case .began:
             if currentState == .bothCollapsed {
                 if gestureIsDraggingFromLeftToRight {
