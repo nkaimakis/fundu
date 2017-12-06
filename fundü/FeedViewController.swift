@@ -25,7 +25,12 @@ class FeedViewController: UIViewController {
         feedEvents = getSummaryFeedEvents()
         setNavButtons()
         createTableView()
+        createSearch()
         setConstraints()
+    }
+    
+    func createSearch() {
+        
     }
     
     func getDailyStats() -> [DailyStat] {
