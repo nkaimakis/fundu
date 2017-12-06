@@ -27,7 +27,7 @@ class DashboardCollectionViewCell: UICollectionViewCell {
         image.layer.masksToBounds = true
         image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.borderWidth = 1
-        image.layer.borderColor = UIColor.black.cgColor
+        image.layer.borderColor = UIColor.white.cgColor
         image.backgroundColor = UIColor.white
         contentView.addSubview(image)
     }
@@ -46,7 +46,9 @@ class DashboardCollectionViewCell: UICollectionViewCell {
     func setConstraints(){
         let margins = contentView.layoutMarginsGuide
         image.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        image.topAnchor.constraint(equalTo: margins.topAnchor, constant: 1.3).isActive = true
+        image.topAnchor.constraintEqualToSystemSpacingBelow(margins.topAnchor, multiplier: 1.3).isActive = true
+        image.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5).isActive = true
+        image.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.5).isActive = true
         label.topAnchor.constraintEqualToSystemSpacingBelow(image.bottomAnchor, multiplier: 2).isActive = true
         label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         label.widthAnchor.constraint(equalToConstant: contentView.bounds.width * 0.8).isActive = true

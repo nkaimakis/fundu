@@ -33,7 +33,7 @@ class FeedTableViewCell: UITableViewCell {
         eventImage.layer.masksToBounds = true
         eventImage.translatesAutoresizingMaskIntoConstraints = false
         eventImage.layer.borderWidth = 1
-        eventImage.layer.borderColor = UIColor.black.cgColor
+        eventImage.layer.borderColor = UIColor.white.cgColor
         eventImage.backgroundColor = UIColor.white
         contentView.addSubview(eventImage)
     }
@@ -62,8 +62,11 @@ class FeedTableViewCell: UITableViewCell {
         let margins = contentView.layoutMarginsGuide
         eventImage.centerYAnchor.constraint(equalTo: margins.centerYAnchor).isActive = true
         eventImage.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 1.2).isActive = true
+        eventImage.widthAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.5).isActive = true
+        eventImage.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.5).isActive = true
         time.centerXAnchor.constraint(equalTo: eventImage.centerXAnchor).isActive = true
         time.topAnchor.constraintEqualToSystemSpacingBelow(eventImage.bottomAnchor, multiplier: 1.1).isActive = true
+        eventDescription.widthAnchor.constraint(equalTo: margins.widthAnchor, multiplier: 0.85).isActive = true
         eventDescription.centerYAnchor.constraint(equalTo: eventImage.centerYAnchor).isActive = true
         eventDescription.leadingAnchor.constraintEqualToSystemSpacingAfter(eventImage.trailingAnchor, multiplier: 1.1).isActive = true
     }
@@ -73,7 +76,7 @@ class FeedTableViewCell: UITableViewCell {
         createTimeLabel()
         createDescriptionLabel()
         createImage()
-       // setConstraints()
+        setConstraints()
     }
 
 }

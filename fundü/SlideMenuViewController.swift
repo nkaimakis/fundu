@@ -44,10 +44,7 @@ class SlideMenuViewController: UIViewController {
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 }
 
 
