@@ -2,7 +2,7 @@ PODS:
   - Charts (3.0.4):
     - Charts/Core (= 3.0.4)
   - Charts/Core (3.0.4)
-  - SendBirdSDK (3.0.10)
+  - SendBirdSDK (3.0.74)
 
 DEPENDENCIES:
   - Charts
@@ -10,7 +10,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Charts: 0705898046257443f0afbbc3179f4b67507b6e48
-  SendBirdSDK: 83f20acb02f662004db5c8729346daa7e089f4d8
+  SendBirdSDK: 1677c5c51e4c9e287fb1d086233cfb733eded089
 
 PODFILE CHECKSUM: 1ef355df43a0590b7536a34ab482bb1525e44010
 

@@ -10,6 +10,77 @@
 #import "SBDBaseMessage.h"
 #import "SBDBaseChannel.h"
 
+@interface SBDThumbnailSize : NSObject
+
+/**
+ The max size of the thumbnail.
+ */
+@property (nonatomic, readonly) CGSize maxSize;
+
+/**
+ Makes `SBDThumbnailSize` object with `CGSize`.
+
+ @param size The max size of the thumbnail.
+ @return `SBDThumbnailSize` object.
+ */
++ (nullable instancetype)makeWithMaxCGSize:(CGSize)size;
+
+/**
+ Makes `SBDThumbnailSize` object with width and height.
+
+ @param width The max width of the thumbnail.
+ @param height The max height of the thumbnail.
+ @return `SBDThumbnailSize` object.
+ */
++ (nullable instancetype)makeWithMaxWidth:(CGFloat)width maxHeight:(CGFloat)height;
+
+
+@end
+
+
+/**
+ The `SBDThumbnail` class represents the thumbnail in the file message.
+ */
+@interface SBDThumbnail : NSObject
+
+/**
+ The url of the thumbnail.
+ */
+@property (strong, nonatomic, readonly, nonnull, getter = url) NSString *url;
+
+
+/**
+ The maximum size of the thumbnail.
+ */
+@property (nonatomic, readonly) CGSize maxSize;
+
+
+/**
+ The real size of the thumbnail.
+ */
+@property (nonatomic, readonly) CGSize realSize;
+
+/**
+ Internal use only.
+ */
+@property (atomic, readonly) BOOL requireAuth;
+
+
+/**
+ Returns url
+ 
+ @return Image url.
+ */
+- (nonnull NSString *)url;
+
+/**
+ *  Internal use only.
+ */
+- (nullable NSDictionary *)_toDictionary;
+
+
+@end
+
 @class SBDBaseChannel;
 
 /**
@@ -20,12 +91,12 @@
 /**
  *  Sender of the message.
  */
-@property (strong, nonatomic, readonly, nullable) SBDUser *sender;
+@property (strong, nonatomic, nullable, getter = sender) SBDUser *sender;
 
 /**
  *  The file URL.
  */
-@property (strong, nonatomic, readonly, nonnull) NSString *url;
+@property (strong, nonatomic, readonly, nonnull, getter = url) NSString *url;
 
 /**
  *  The name of file.
@@ -52,22 +123,83 @@
  */
 @property (strong, nonatomic, readonly, nullable) NSString *requestId;
 
+/**
+ *  Custom message type.
+ */
+@property (strong, nonatomic, readonly, nullable) NSString *customType;
+
+
+/**
+ Image thumbnails.
+ */
+@property (strong, nonatomic, readonly, nullable) NSArray<SBDThumbnail *> *thumbnails;
+
+/**
+ Internal use only.
+ */
+@property (atomic, readonly) BOOL requireAuth;
+
 - (nullable instancetype)initWithDictionary:(NSDictionary * _Nonnull)dict;
 
 /**
  *  Builds file message with the information which is releated to file.
  *
- *  @param url       The file URL.
- *  @param name      The <span>name</span> of file.
- *  @param size      The <span>size</span> of file.
- *  @param type      The <span>type</span> of file.
- *  @param data      The custom <span>data</span> for file.
- *  @param requestId Request ID for ACK.
- *  @param sender    Sender of the message.
- *  @param channel   The channel which the file message is sent.
+ *  @param url        The file URL.
+ *  @param name       The <span>name</span> of file.
+ *  @param size       The <span>size</span> of file.
+ *  @param type       The <span>type</span> of file.
+ *  @param data       The custom <span>data</span> for file.
+ *  @param requestId  Request ID for ACK.
+ *  @param sender     Sender of the message.
+ *  @param channel    The channel which the file message is sent.
+ *  @param customType Custom message type.
  *
  *  @return File message object with request ID.
  */
-+ (nullable NSMutableDictionary<NSString *, NSObject *> *)buildWithFileUrl:(NSString * _Nonnull)url name:(NSString * _Nullable)name size:(NSUInteger)size type:(NSString * _Nonnull)type data:(NSString * _Nullable)data requestId:(NSString * _Nullable)requestId sender:(SBDUser * _Nonnull)sender channel:(SBDBaseChannel * _Nonnull)channel;
++ (nullable NSMutableDictionary<NSString *, NSObject *> *)buildWithFileUrl:(NSString * _Nonnull)url name:(NSString * _Nullable)name size:(NSUInteger)size type:(NSString * _Nonnull)type data:(NSString * _Nullable)data requestId:(NSString * _Nullable)requestId sender:(SBDUser * _Nonnull)sender channel:(SBDBaseChannel * _Nonnull)channel customType:(NSString * _Nullable)customType;
+
+/**
+ *  Builds file message with the information which is releated to file.
+ *
+ *  @param url        The file URL.
+ *  @param name       The <span>name</span> of file.
+ *  @param size       The <span>size</span> of file.
+ *  @param type       The <span>type</span> of file.
+ *  @param data       The custom <span>data</span> for file.
+ *  @param requestId  Request ID for ACK.
+ *  @param sender     Sender of the message.
+ *  @param channel    The channel which the file message is sent.
+ *  @param customType Custom message type.
+ *  @param thumbnailSizes Thumbnail sizes to require.
+ *
+ *  @return File message object with request ID.
+ */
++ (nullable NSMutableDictionary<NSString *, NSObject *> *)buildWithFileUrl:(NSString * _Nonnull)url name:(NSString * _Nullable)name size:(NSUInteger)size type:(NSString * _Nonnull)type data:(NSString * _Nullable)data requestId:(NSString * _Nullable)requestId sender:(SBDUser * _Nonnull)sender channel:(SBDBaseChannel * _Nonnull)channel customType:(NSString * _Nullable)customType thumbnailSizes:(NSArray<SBDThumbnailSize *> * _Nullable)thumbnailSizes;
+
+/**
+ Returns url
+ 
+ @return Image url.
+ */
+- (nonnull NSString *)url;
+
+/**
+ Serializes message object.
+ 
+ @return Serialized <span>data</span>.
+ */
+- (nullable NSData *)serialize;
+
+/**
+ Returns sender.
+ 
+ @return Sender of the message.
+ */
+- (nonnull SBDUser *)sender;
+
+/**
+ *  Internal use only.
+ */
+- (nullable NSDictionary *)_toDictionary;
 
 @end

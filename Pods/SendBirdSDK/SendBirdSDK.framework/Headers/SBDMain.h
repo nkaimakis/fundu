@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "SBDUser.h"
 #import "SBDBaseChannel.h"
 #import "SBDGroupChannel.h"
@@ -15,6 +16,27 @@
 #import "SBDTypes.h"
 #import "SBDUserListQuery.h"
 #import "SBDInternalTypes.h"
+
+/**
+ Represents operation options.
+ */
+@interface SBDOptions : NSObject
+
+/**
+ Gets the value whether the sender information of `sender` of `SBDUserMessage` or `SBDFileMessage` such as nickname and profile url will be returned as the latest user's or not.
+
+ @return If YES, the sender is the latest information.
+ */
++ (BOOL)useMemberAsMessageSender;
+
+/**
+ If set <code>YES</code>, the sender information of `sender` of `SBDUserMessage` or `SBDFileMessage` such as nickname and profile url will be returned as the latest user's. Otherwise, the information will be the value of the message creation time.
+
+ @param tf <code>YES</code> or <code>NO</code>.
+ */
++ (void)setUseMemberAsMessageSender:(BOOL)tf;
+
+@end
 
 /**
  *  An object that adopts the `SBDConnectionDelegate` protocol is responsible for managing the connection statuses. This delegate includes three statuses: reconnection start, reconnection succession, and reconnection failure. The `SBDConnectionDelegate` can be added by [`addConnectionDelegate:identifier:`](../Classes/SBDMain.html#//api/name/addConnectionDelegate:identifier:) in `SBDMain`. Every `SBDConnectionDelegate` method which is added is going to manage the statues.
@@ -40,6 +62,11 @@
  */
 - (void)didFailReconnection;
 
+/**
+ *  Invoked when reconnection is cancelled.
+ */
+- (void)didCancelReconnection;
+
 @end
 
 /**
@@ -56,12 +83,18 @@
 /**
  *  Manages registered `SBDConnectionDelegate`.
  */
-@property (nonatomic, strong, readonly, nullable) NSMutableDictionary<NSString *, NSValue *> *connectionDelegatesDictionary;
+@property (nonatomic, strong, readonly, nullable) NSMapTable<NSString *, id<SBDConnectionDelegate>> *connectionDelegatesDictionary;
 
 /**
  *  Manages registered `SBDChannelDelegate`.
  */
-@property (nonatomic, strong, readonly, nullable) NSMutableDictionary<NSString *, NSValue *> *channelDelegatesDictionary;
+@property (nonatomic, strong, readonly, nullable) NSMapTable<NSString *, id<SBDChannelDelegate>> *channelDelegatesDictionary;
+
+@property (nonatomic, strong, nullable) void (^backgroundSessionCompletionHandler)();
+
+@property (strong, nonatomic, nonnull) NSMutableArray<void (^)()> *backgroundTaskBlock;
+
+@property (atomic) int URLSessionDidFinishEventsForBackgroundURLSession;
 
 - (nullable instancetype)init;
 
@@ -118,8 +151,10 @@
  *  Initializes `SBDMain` singleton instance with SendBird Application ID. The Application ID is on SendBird dashboard. This method has to be run first in order to user SendBird.
  *
  *  @param applicationId The Applicatin ID of SendBird. It can be founded on SendBird Dashboard.
+ *
+ *  @return If YES, the applicationId is set.
  */
-+ (void)initWithApplicationId:(NSString * _Nonnull)applicationId;
++ (BOOL)initWithApplicationId:(NSString * _Nonnull)applicationId;
 
 /**
  *  SendBird internal use only.
@@ -142,6 +177,11 @@
  *  @param completionHandler The handler block to execute. `user` is the object to represent the current user.
  */
 + (void)connectWithUserId:(NSString * _Nonnull)userId accessToken:(NSString * _Nullable)accessToken completionHandler:(nullable void (^)(SBDUser * _Nullable user, SBDError * _Nullable error))completionHandler;
+
+/**
+ Internal use only.
+ */
++ (void)connectWithUserId:(NSString * _Nonnull)userId accessToken:(NSString * _Nullable)accessToken apiHost:(NSString * _Nullable)apiHost wsHost:(NSString * _Nullable)wsHost completionHandler:(nullable void (^)(SBDUser * _Nullable user, SBDError * _Nullable error))completionHandler;
 
 /**
  *  Gets the current user object. The object is valid when the connection succeeded.
@@ -178,6 +218,20 @@
 + (void)removeConnectionDelegateForIdentifier:(NSString * _Nonnull)identifier;
 
 /**
+ *  Gets the delegate for connection by indentifer.
+ *
+ *  @param identifier The identifier for delegate.
+ *
+ *  @return `SBDConnectionDelegate` delegate.
+ */
++ (nullable id<SBDConnectionDelegate>)connectionDelegateForIdentifier:(NSString * _Nonnull)identifier;
+
+/**
+ Removes all connection delegates;
+ */
++ (void)removeAllConnectionDelegates;
+
+/**
  *  Adds the `SBDChannelDelegate`.
  *
  *  @param delegate   `SBDChannelDelegate` delegate.
@@ -202,6 +256,11 @@
 + (nullable id<SBDChannelDelegate>)channelDelegateForIdentifier:(NSString * _Nonnull)identifier;
 
 /**
+ Removes all channel delegates;
+ */
++ (void)removeAllChannelDelegates;
+
+/**
  *  Gets the WebSocket server connection state.
  *
  *  @return `SBDWebSocketConnectionState`
@@ -212,6 +271,20 @@
  *  - `SBSWebSocketClosed` - Disconnected from the chat server
  */
 + (SBDWebSocketConnectionState)getConnectState;
+
+/**
+ Sets dispatch queue for every completion handler and delegate. Default queue is the main queue.
+
+ @param queue Dispatch queue for every completion handler and delegate.
+ */
++ (void)setCompletionHandlerDelegateQueue:(dispatch_queue_t _Nullable)queue;
+
+/**
+ Runs block in the dispatch queue that was set by `setCompletionHandlerDelegateQueue:`.
+
+ @param block Block to run.
+ */
++ (void)performComletionHandlerDelegateQueueBlock:(dispatch_block_t _Nullable)block;
 
 /**
  *  Internal use only.
@@ -271,6 +344,16 @@
 + (void)updateCurrentUserInfoWithNickname:(NSString * _Nullable)nickname profileImage:(NSData * _Nullable)profileImage progressHandler:(nullable void (^)(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend))progressHandler completionHandler:(nullable void (^)(SBDError * _Nullable error))completionHandler;
 
 /**
+ *  Updates the current user's information.
+ *
+ *  @param nickname          New nickname.
+ *  @param profileImageFilePath      New profile image file path.
+ *  @param progressHandler   The handler block to monitor progression. `bytesSent` is the number of bytes sent since the last time this method was called. `totalBytesSent` is the total number of bytes sent so far. `totalBytesExpectedToSend` is the expected length of the body data. These parameters are the same to the declaration of [`URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:`](https://developer.apple.com/reference/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc).
+ *  @param completionHandler The handler block to execute.
+ */
++ (void)updateCurrentUserInfoWithNickname:(NSString * _Nullable)nickname profileImageFilePath:(NSString * _Nullable)profileImageFilePath progressHandler:(nullable void (^)(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend))progressHandler completionHandler:(nullable void (^)(SBDError * _Nullable error))completionHandler;
+
+/**
  *  Gets the pending push token.
  *
  *  @return Returns the pending push token. 
@@ -281,9 +364,20 @@
  *  Registers the current device token to SendBird.
  *
  *  @param devToken          Device token for APNS.
- *  @param completionHandler The handler block to execute. `status` is the status for push token registration. It is defined in `SBDPushTokenRegistrationStatus`. `SBDPushTokenRegistrationStatusSuccess` represents the `devToken` is registered. `SBDPushTokenRegistrationStatusPending` represents the `devToken` is not registered because the connection is not established, so this method has to be invoked with `getPendingPushToken` method after the connection. The `devToken` is retrived by `getPendingPushToken`. `SBDPushTokenRegistrationStatusError` represents the push token registration is failed. 
+ *  @param unique            If YES, register device token after removing exsiting all device tokens of the current user. If NO, just add the device token.
+ *  @param completionHandler The handler block to execute. `status` is the status for push token registration. It is defined in `SBDPushTokenRegistrationStatus`. `SBDPushTokenRegistrationStatusSuccess` represents the `devToken` is registered. `SBDPushTokenRegistrationStatusPending` represents the `devToken` is not registered because the connection is not established, so this method has to be invoked with `getPendingPushToken` method after the connection. The `devToken` is retrived by `getPendingPushToken`. `SBDPushTokenRegistrationStatusError` represents the push token registration is failed.
  */
-+ (void)registerDevicePushToken:(NSData * _Nonnull)devToken completionHandler:(nullable void (^)(SBDPushTokenRegistrationStatus status, SBDError * _Nullable error))completionHandler;
++ (void)registerDevicePushToken:(NSData * _Nonnull)devToken unique:(BOOL)unique completionHandler:(nullable void (^)(SBDPushTokenRegistrationStatus status, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Registers the current device token to SendBird.
+ *
+ *  @param devToken          Device token for APNS.
+ *  @param completionHandler The handler block to execute. `status` is the status for push token registration. It is defined in `SBDPushTokenRegistrationStatus`. `SBDPushTokenRegistrationStatusSuccess` represents the `devToken` is registered. `SBDPushTokenRegistrationStatusPending` represents the `devToken` is not registered because the connection is not established, so this method has to be invoked with `getPendingPushToken` method after the connection. The `devToken` is retrived by `getPendingPushToken`. `SBDPushTokenRegistrationStatusError` represents the push token registration is failed. 
+ *
+ *  @deprecated in 3.0.22
+ */
++ (void)registerDevicePushToken:(NSData * _Nonnull)devToken completionHandler:(nullable void (^)(SBDPushTokenRegistrationStatus status, SBDError * _Nullable error))completionHandler DEPRECATED_ATTRIBUTE;
 
 /**
  *  Registers the current device token to SendBird.
@@ -361,5 +455,90 @@
  *  @param completionHandler The handler block to execute.
  */
 + (void)getDoNotDisturbWithCompletionHandler:(nullable void (^)(BOOL isDoNotDisturbOn, int startHour, int startMin, int endHour, int endMin, NSString * _Nonnull timezone, SBDError * _Nullable error))completionHandler;
+
+/**
+ Sets push sound
+ 
+ @param sound Push sound
+ */
++ (void)setPushSound:(NSString * _Nonnull)sound completionHandler:(nullable void (^)(SBDError * _Nullable error))completionHandler;
+
+
+/**
+ Gets push shound
+
+ @param completionHandler The handler block to execute.
+ */
++ (void)getPushSoundWithCompletionHandler:(nullable void (^)(NSString * _Nullable sound, SBDError * _Nullable error))completionHandler;
+
+
+/**
+ Sets a push template of the current user.
+
+ @param name The name of push template. It can be `SBD_PUSH_TEMPLATE_DEFAULT` or `SBD_PUSH_TEMPLATE_ALTERNATIVE`.
+ @param completionHandler The handler block to execute.
+ */
++ (void)setPushTemplateWithName:(NSString * _Nonnull)name completionHandler:(nullable void (^)(SBDError * _Nullable error))completionHandler;
+
+
+/**
+ Gets a push template of the current user.
+
+ @param completionHandler The handler block to execute. The `name` is the current user's push template.
+ */
++ (void)getPushTemplateWithCompletionHandler:(nullable void (^)(NSString * _Nullable name, SBDError * _Nullable error))completionHandler;
+
+
+/**
+ Starts reconnection explictly. The `SBDConnectionDelegate` delegates will be invoked by the reconnection process.
+
+ @return Returns YES if there is the data to be used for reconnection.
+ */
++ (BOOL)reconnect;
+
+/**
+ Gets mime type of file.
+
+ @param file File to get mime type.
+ @return Returns mime type of the file.
+ */
++ (nullable NSString *)getMimeType:(NSData * _Nullable)file;
+
+
+/**
+ Turns on or off the reconnection by network awareness.
+
+ @param onOff If YES, the reconnection by network Awareness is turned.
+ */
++ (void)setNetworkAwarenessReconnection:(BOOL)onOff;
+
+
+/**
+ Internal use only.
+ */
++ (nullable NSString *)getCustomApiHost;
+
+
+/**
+ Internal use only.
+ */
++ (nullable NSString *)getCustomWsHost;
+
+
+/**
+ Sets group channel invitation preference for auto acceptance.
+
+ @param autoAccept If YES, the current user will accept the group channel invitation automatically.
+ @param completionHandler The handler block to execute.
+ */
++ (void)setChannelInvitationPreferenceAutoAccept:(BOOL)autoAccept completionHandler:(nullable void (^)(SBDError * _Nullable error))completionHandler;
+
+
+/**
+ Gets group channel inviation preference for auto acceptance.
+
+ @param completionHandler The handler block to execute.
+ */
++ (void)getChannelInvitationPreferenceAutoAcceptWithCompletionHandler:(nullable void (^)(BOOL autoAccept, SBDError * _Nullable error))completionHandler;
 
 @end

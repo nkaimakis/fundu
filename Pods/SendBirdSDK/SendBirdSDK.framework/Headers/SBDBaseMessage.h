@@ -36,6 +36,12 @@
  */
 @property (atomic) long long createdAt;
 
+
+/**
+ Message updated time in millisecond(UTC).
+ */
+@property (atomic) long long updatedAt;
+
 /**
  *  Initializes a message object.
  *
@@ -73,5 +79,25 @@
  *  @return Returns YES, when this is group channel.
  */
 - (BOOL)isGroupChannel;
+
+/**
+ Builds a message object from serialized <span>data</span>.
+ 
+ @param data Serialized <span>data</span>.
+ @return SBDBaseMessage object.
+ */
++ (nullable instancetype)buildFromSerializedData:(NSData * _Nonnull)data;
+
+/**
+ Serializes message object.
+ 
+ @return Serialized <span>data</span>.
+ */
+- (nullable NSData *)serialize;
+
+/**
+ *  Internal use only.
+ */
+- (nullable NSDictionary *)_toDictionary;
 
 @end

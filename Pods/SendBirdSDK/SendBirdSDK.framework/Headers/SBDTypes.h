@@ -12,6 +12,8 @@
 #define CHANNEL_TYPE_OPEN @"open"
 #define CHANNEL_TYPE_GROUP @"group"
 
+#define SBD_PUSH_TEMPLATE_DEFAULT @"default"
+#define SBD_PUSH_TEMPLATE_ALTERNATIVE @"alternative"
 
 /**
  *  The order type for `SBDGroupChannelListQuery`.
@@ -41,17 +43,18 @@ typedef NS_ENUM(NSInteger, SDBErrorCode) {
     SBDErrorUnusableCharacterIncluded = 400151,
     SBDErrorNotFoundInDatabase = 400201,
     SBDErrorDuplicatedData = 400202,
+    
+    SBDErrorUserDeactivated = 400300,
+    SBDErrorUserNotExist = 400301,
+    SBDErrorAccessTokenNotValid = 400302,
+    SBDErrorAuthUnknownError = 400303,
+    SBDErrorAppIdNotValid = 400304,
+    SBDErrorAuthUserIdTooLong = 400305,
+    SBDErrorAuthPlanQuotaExceeded = 400306,
+    
     SBDErrorInvalidApiToken = 400401,
     SBDErrorParameterMissing = 400402,
     SBDErrorInvalidJsonBody = 400403,
-    
-    // RESTful API Errors for SDK
-    SBDErrorAppIdNotValid = 400404,
-    SBDErrorAccessTokenEmpty = 400500,
-    SBDErrorAccessTokenNotValid = 400501,
-    SBDErrorUserNotExist = 400502,
-    SBDErrorUserDeactivated = 400503,
-    SBDErrorUserCreationFailed = 400504,
     
     SBDErrorInternalServerError = 500901,
     
@@ -71,6 +74,8 @@ typedef NS_ENUM(NSInteger, SDBErrorCode) {
     SBDErrorWebSocketConnectionClosed = 800200,
     SBDErrorWebSocketConnectionFailed = 800210,
     SBDErrorRequestFailed = 800220,
+    SBDErrorFileUploadCancelFailed = 800230,
+    SBDErrorFileUploadCancelled = 800240,
 };
 
 /**
@@ -92,7 +97,7 @@ typedef NS_ENUM(NSUInteger, SBDWebSocketConnectionState) {
     /**
      *  Closed
      */
-    SBSWebSocketClosed = 3,
+    SBDWebSocketClosed = 3,
 };
 
 /**
@@ -134,6 +139,56 @@ typedef NS_ENUM(NSUInteger, SBDPushTokenRegistrationStatus) {
      *  Registartion is failed.
      */
     SBDPushTokenRegistrationStatusError = 2,
+};
+
+/**
+ *  The query type for `SBDGroupChannelListQuery`.
+ */
+typedef NS_ENUM(NSInteger, SBDGroupChannelListQueryType) {
+    SBDGroupChannelListQueryTypeAnd = 0,
+    SBDGroupChannelListQueryTypeOr = 1,
+};
+
+
+/**
+ Message type for filtering
+
+ - SBDMessageTypeFilterAll: All.
+ - SBDMessageTypeFilterUser: User message.
+ - SBDMessageTypeFilterFile: File message.
+ - SBDMessageTypeFilterAdmin: Admin message.
+ */
+typedef NS_ENUM(NSInteger, SBDMessageTypeFilter) {
+    SBDMessageTypeFilterAll = 0,
+    SBDMessageTypeFilterUser = 1,
+    SBDMessageTypeFilterFile = 2,
+    SBDMessageTypeFilterAdmin = 3,
+};
+
+
+/**
+ Member state filter for group channel list query and group channel count
+
+ - SBDMemberStateFilterAll: All.
+ - SBDMemberStateFilterJoinedOnly: Joined state only.
+ - SBDMemberStateFilterInvitedOnly: Invited state only.
+ */
+typedef NS_ENUM(NSInteger, SBDMemberStateFilter) {
+    SBDMemberStateFilterAll = 0,
+    SBDMemberStateFilterJoinedOnly = 1,
+    SBDMemberStateFilterInvitedOnly = 2,
+};
+
+
+/**
+ Member state in group channel.
+
+ - SBDMemberStateJoined: Joined member in a group channel.
+ - SBDMemberStateInvited: Invited member in a group channel.
+ */
+typedef NS_ENUM(NSInteger, SBDMemberState) {
+    SBDMemberStateJoined = 0,
+    SBDMemberStateInvited = 1,
 };
 
 #endif /* SBDTypes_h */

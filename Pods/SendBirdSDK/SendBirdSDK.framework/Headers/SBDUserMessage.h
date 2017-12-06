@@ -31,13 +31,42 @@
 /**
  *  Sender of the <span>message</span>. This is represented by `SBDUser` class.
  */
-@property (strong, nonatomic, readonly, nullable) SBDUser *sender;
+@property (strong, nonatomic, nullable, getter = sender) SBDUser *sender;
 
 /**
  *  Request ID for checking ACK.
  */
 @property (strong, nonatomic, readonly, nullable) NSString *requestId;
 
+/**
+ *  Custom message type.
+ */
+@property (strong, nonatomic, readonly, nullable) NSString *customType;
+
+/**
+ *  Translated <span>message</span> text.
+ */
+@property (strong, nonatomic, readonly, nullable) NSDictionary *translations;
+
 - (nullable instancetype)initWithDictionary:(NSDictionary * _Nonnull)dict;
+
+/**
+ Serializes message object.
+ 
+ @return Serialized <span>data</span>.
+ */
+- (nullable NSData *)serialize;
+
+/**
+ Returns sender.
+ 
+ @return Sender of the message.
+ */
+- (nonnull SBDUser *)sender;
+
+/**
+ *  Internal use only.
+ */
+- (nullable NSDictionary *)_toDictionary;
 
 @end

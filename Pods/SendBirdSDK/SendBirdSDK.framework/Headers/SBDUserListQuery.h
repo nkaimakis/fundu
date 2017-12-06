@@ -15,6 +15,7 @@
  *  The `SBDUserListQuery` class is a query class for getting the list of all users, participants, blocked users, muted users and banned users. Each type of the query is created by the class or the instance that is related to it.
  *
  *  * The query for the all users is created by [`createAllUserListQuery`](../Classes/SBDMain.html#//api/name/createAllUserListQuery) of `SBDMain` class.
+ *  * The query for the users of the specified user IDs is created by [`createUserListQueryWithUserIds:`](../Classes/SBDMain.html#//api/name/createUserListQueryWithUserIds:) of `SBDMain` class.
  *  * The query for the blocked users is created by [`createBlockedUserListQuery`](../Classes/SBDMain.html#//api/name/createBlockedUserListQuery) of `SBDMain` class.
  *  * The query for the participants in the specified open <span>channel</span> is created by [`createParticipantListQuery`](../Classes/SBDOpenChannel.html#//api/name/createParticipantListQuery) of the `SBDOpenChannel` instance.
  *  * The query for the muted users is created by [`createMutedUserListQuery`](../Classes/SBDOpenChannel.html#//api/name/createMutedUserListQuery) of the `SBDOpenChannel` instance.
@@ -52,6 +53,15 @@
  *  Internal use only.
  */
 - (nullable instancetype)initWithUserIds:(NSArray<NSString *> * _Nonnull)userIds;
+
+
+/**
+ Sets meta data filter.
+
+ @param key The key of the meta data to use for filter.
+ @param values The values of the meta data to use for filter.
+ */
+- (void)setMetaDataFilterWithKey:(NSString * _Nonnull)key values:(NSArray<NSString *> * _Nonnull)values;
 
 /**
  *  Shows if the query is loading.

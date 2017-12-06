@@ -29,9 +29,19 @@
 @property (strong, nonatomic, readonly, nullable) NSMutableArray<SBDUser *> *operators;
 
 /**
+ The frozen state of this channel.
+ */
+@property (atomic) BOOL isFrozen;
+
+/**
  *  Internal use only.
  */
 + (void)clearCache;
+
+/**
+ *  Internal use only.
+ */
++ (void)clearEnteredChannels;
 
 /**
  *  Internal use only.
@@ -73,6 +83,43 @@
 + (void)createChannelWithName:(NSString * _Nullable)name coverUrl:(NSString * _Nullable)coverUrl data:(NSString * _Nullable)data operatorUsers:(NSArray<SBDUser *> * _Nullable)operatorUsers completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
 
 /**
+ *  Updates an open channel with properties.
+ *
+ *  @param name              The name of the channel.
+ *  @param coverUrl          The cover image URL.
+ *  @param data              The data for channel.
+ *  @param operatorUsers     The operator users of channel.
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
+- (void)updateChannelWithName:(NSString * _Nullable)name coverUrl:(NSString * _Nullable)coverUrl data:(NSString * _Nullable)data operatorUsers:(NSArray<SBDUser *> * _Nullable)operatorUsers completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Creates an open channel with properties.
+ *
+ *  @param name              The name of the channel.
+ *  @param coverImage        The cover image data of group channel.
+ *  @param coverImageName    The cover image file name of group channel.
+ *  @param data              The data for channel.
+ *  @param operatorUsers     The operator users of channel.
+ *  @param progressHandler   The handler block to monitor progression. `bytesSent` is the number of bytes sent since the last time this method was called. `totalBytesSent` is the total number of bytes sent so far. `totalBytesExpectedToSend` is the expected length of the body <span>data</span>. These parameters are the same to the declaration of [`URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:`](https://developer.apple.com/reference/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc).
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
++ (void)createChannelWithName:(NSString * _Nullable)name coverImage:(NSData * _Nonnull)coverImage coverImageName:(NSString * _Nonnull)coverImageName data:(NSString * _Nullable)data operatorUsers:(NSArray<SBDUser *> * _Nullable)operatorUsers progressHandler:(nullable void (^)(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend))progressHandler completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Updates an open channel with properties.
+ *
+ *  @param name              The name of the channel.
+ *  @param coverImage        The cover image data of group channel.
+ *  @param coverImageName    The cover image file name of group channel.
+ *  @param data              The data for channel.
+ *  @param operatorUsers     The operator users of channel.
+ *  @param progressHandler   The handler block to monitor progression. `bytesSent` is the number of bytes sent since the last time this method was called. `totalBytesSent` is the total number of bytes sent so far. `totalBytesExpectedToSend` is the expected length of the body <span>data</span>. These parameters are the same to the declaration of [`URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:`](https://developer.apple.com/reference/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc).
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
+- (void)updateChannelWithName:(NSString * _Nullable)name coverImage:(NSData * _Nullable)coverImage coverImageName:(NSString * _Nullable)coverImageName data:(NSString * _Nullable)data operatorUsers:(NSArray<SBDUser *> * _Nullable)operatorUsers progressHandler:(nullable void (^)(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend))progressHandler completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
  *  Creates an open channel.
  *
  *  @param name              The name of the channel.
@@ -82,6 +129,163 @@
  *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
  */
 + (void)createChannelWithName:(NSString * _Nullable)name coverUrl:(NSString * _Nullable)coverUrl data:(NSString * _Nullable)data operatorUserIds:(NSArray<NSString *> * _Nullable)operatorUserIds completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Creates an open channel.
+ *
+ *  @param name              The name of the channel.
+ *  @param coverUrl          The cover image URL.
+ *  @param data              The data for channel.
+ *  @param operatorUserIds   The operator user IDs of channel.
+ *  @param customType        The custom type for channel.
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
++ (void)createChannelWithName:(NSString * _Nullable)name coverUrl:(NSString * _Nullable)coverUrl data:(NSString * _Nullable)data operatorUserIds:(NSArray<NSString *> * _Nullable)operatorUserIds customType:(NSString * _Nullable)customType completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Creates an open channel.
+ *
+ *  @param name              The name of the channel.
+ *  @param channelUrl        The channel URL. If nil, channel url will be determined randomly.
+ *  @param coverUrl          The cover image URL.
+ *  @param data              The data for channel.
+ *  @param operatorUserIds   The operator user IDs of channel.
+ *  @param customType        The custom type for channel.
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
++ (void)createChannelWithName:(NSString * _Nullable)name channelUrl:(NSString * _Nullable)channelUrl coverUrl:(NSString * _Nullable)coverUrl data:(NSString * _Nullable)data operatorUserIds:(NSArray<NSString *> * _Nullable)operatorUserIds customType:(NSString * _Nullable)customType completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Updates an open channel.
+ *
+ *  @param name              The name of the channel.
+ *  @param coverUrl          The cover image URL.
+ *  @param data              The data for channel.
+ *  @param operatorUserIds   The operator user IDs of channel.
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
+- (void)updateChannelWithName:(NSString * _Nullable)name coverUrl:(NSString * _Nullable)coverUrl data:(NSString * _Nullable)data operatorUserIds:(NSArray<NSString *> * _Nullable)operatorUserIds completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Updates an open channel.
+ *
+ *  @param name              The name of the channel.
+ *  @param coverUrl          The cover image URL.
+ *  @param data              The data for channel.
+ *  @param operatorUserIds   The operator user IDs of channel.
+ *  @param customType        The custom type for channel.
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
+- (void)updateChannelWithName:(NSString * _Nullable)name coverUrl:(NSString * _Nullable)coverUrl data:(NSString * _Nullable)data operatorUserIds:(NSArray<NSString *> * _Nullable)operatorUserIds customType:(NSString * _Nullable)customType completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Creates an open channel.
+ *
+ *  @param name              The name of the channel.
+ *  @param coverImage        The cover image data of group channel.
+ *  @param coverImageName    The cover image file name of group channel.
+ *  @param data              The data for channel.
+ *  @param operatorUserIds   The operator user IDs of channel.
+ *  @param progressHandler   The handler block to monitor progression. `bytesSent` is the number of bytes sent since the last time this method was called. `totalBytesSent` is the total number of bytes sent so far. `totalBytesExpectedToSend` is the expected length of the body <span>data</span>. These parameters are the same to the declaration of [`URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:`](https://developer.apple.com/reference/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc).
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
++ (void)createChannelWithName:(NSString * _Nullable)name coverImage:(NSData * _Nonnull)coverImage coverImageName:(NSString * _Nonnull)coverImageName data:(NSString * _Nullable)data operatorUserIds:(NSArray<NSString *> * _Nullable)operatorUserIds progressHandler:(nullable void (^)(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend))progressHandler completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Creates an open channel.
+ *
+ *  @param name              The name of the channel.
+ *  @param coverImage        The cover image data of group channel.
+ *  @param coverImageName    The cover image file name of group channel.
+ *  @param data              The data for channel.
+ *  @param operatorUserIds   The operator user IDs of channel.
+ *  @param customType        The custom type for channel.
+ *  @param progressHandler   The handler block to monitor progression. `bytesSent` is the number of bytes sent since the last time this method was called. `totalBytesSent` is the total number of bytes sent so far. `totalBytesExpectedToSend` is the expected length of the body <span>data</span>. These parameters are the same to the declaration of [`URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:`](https://developer.apple.com/reference/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc).
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
++ (void)createChannelWithName:(NSString * _Nullable)name coverImage:(NSData * _Nonnull)coverImage coverImageName:(NSString * _Nonnull)coverImageName data:(NSString * _Nullable)data operatorUserIds:(NSArray<NSString *> * _Nullable)operatorUserIds customType:(NSString * _Nullable)customType progressHandler:(nullable void (^)(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend))progressHandler completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Creates an open channel.
+ *
+ *  @param name              The name of the channel.
+ *  @param channelUrl        The channel URL. If nil, channel url will be determined randomly.
+ *  @param coverImage        The cover image data of group channel.
+ *  @param coverImageName    The cover image file name of group channel.
+ *  @param data              The data for channel.
+ *  @param operatorUserIds   The operator user IDs of channel.
+ *  @param customType        The custom type for channel.
+ *  @param progressHandler   The handler block to monitor progression. `bytesSent` is the number of bytes sent since the last time this method was called. `totalBytesSent` is the total number of bytes sent so far. `totalBytesExpectedToSend` is the expected length of the body <span>data</span>. These parameters are the same to the declaration of [`URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:`](https://developer.apple.com/reference/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc).
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
++ (void)createChannelWithName:(NSString * _Nullable)name channelUrl:(NSString * _Nullable)channelUrl coverImage:(NSData * _Nonnull)coverImage coverImageName:(NSString * _Nonnull)coverImageName data:(NSString * _Nullable)data operatorUserIds:(NSArray<NSString *> * _Nullable)operatorUserIds customType:(NSString * _Nullable)customType progressHandler:(nullable void (^)(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend))progressHandler completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Creates an open channel.
+ *
+ *  @param name              The name of the channel.
+ *  @param coverImageFilePath        The cover image file path of group channel.
+ *  @param data              The data for channel.
+ *  @param operatorUserIds   The operator user IDs of channel.
+ *  @param customType        The custom type for channel.
+ *  @param progressHandler   The handler block to monitor progression. `bytesSent` is the number of bytes sent since the last time this method was called. `totalBytesSent` is the total number of bytes sent so far. `totalBytesExpectedToSend` is the expected length of the body <span>data</span>. These parameters are the same to the declaration of [`URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:`](https://developer.apple.com/reference/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc).
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
++ (void)createChannelWithName:(NSString * _Nullable)name coverImageFilePath:(NSString * _Nonnull)coverImageFilePath data:(NSString * _Nullable)data operatorUserIds:(NSArray<NSString *> * _Nullable)operatorUserIds customType:(NSString * _Nullable)customType progressHandler:(nullable void (^)(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend))progressHandler completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Creates an open channel.
+ *
+ *  @param name              The name of the channel.
+ *  @param channelUrl        The channel URL. If nil, channel url will be determined randomly.
+ *  @param coverImageFilePath        The cover image file path of group channel.
+ *  @param data              The data for channel.
+ *  @param operatorUserIds   The operator user IDs of channel.
+ *  @param customType        The custom type for channel.
+ *  @param progressHandler   The handler block to monitor progression. `bytesSent` is the number of bytes sent since the last time this method was called. `totalBytesSent` is the total number of bytes sent so far. `totalBytesExpectedToSend` is the expected length of the body <span>data</span>. These parameters are the same to the declaration of [`URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:`](https://developer.apple.com/reference/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc).
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
++ (void)createChannelWithName:(NSString * _Nullable)name channelUrl:(NSString * _Nullable)channelUrl coverImageFilePath:(NSString * _Nonnull)coverImageFilePath data:(NSString * _Nullable)data operatorUserIds:(NSArray<NSString *> * _Nullable)operatorUserIds customType:(NSString * _Nullable)customType progressHandler:(nullable void (^)(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend))progressHandler completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Updates an open channel.
+ *
+ *  @param name              The name of the channel.
+ *  @param coverImage        The cover image data of group channel.
+ *  @param coverImageName    The cover image file name of group channel.
+ *  @param data              The data for channel.
+ *  @param operatorUserIds   The operator user IDs of channel.
+ *  @param progressHandler   The handler block to monitor progression. `bytesSent` is the number of bytes sent since the last time this method was called. `totalBytesSent` is the total number of bytes sent so far. `totalBytesExpectedToSend` is the expected length of the body <span>data</span>. These parameters are the same to the declaration of [`URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:`](https://developer.apple.com/reference/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc).
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
+- (void)updateChannelWithName:(NSString * _Nullable)name coverImage:(NSData * _Nullable)coverImage coverImageName:(NSString * _Nullable)coverImageName data:(NSString * _Nullable)data operatorUserIds:(NSArray<NSString *> * _Nullable)operatorUserIds progressHandler:(nullable void (^)(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend))progressHandler completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Updates an open channel.
+ *
+ *  @param name              The name of the channel.
+ *  @param coverImage        The cover image data of group channel.
+ *  @param coverImageName    The cover image file name of group channel.
+ *  @param data              The data for channel.
+ *  @param operatorUserIds   The operator user IDs of channel.
+ *  @param customType        The custom type for channel.
+ *  @param progressHandler   The handler block to monitor progression. `bytesSent` is the number of bytes sent since the last time this method was called. `totalBytesSent` is the total number of bytes sent so far. `totalBytesExpectedToSend` is the expected length of the body <span>data</span>. These parameters are the same to the declaration of [`URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:`](https://developer.apple.com/reference/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc).
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
+- (void)updateChannelWithName:(NSString * _Nullable)name coverImage:(NSData * _Nullable)coverImage coverImageName:(NSString * _Nullable)coverImageName data:(NSString * _Nullable)data operatorUserIds:(NSArray<NSString *> * _Nullable)operatorUserIds customType:(NSString * _Nullable)customType progressHandler:(nullable void (^)(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend))progressHandler completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
+
+/**
+ *  Updates an open channel.
+ *
+ *  @param name              The name of the channel.
+ *  @param coverImageFilePath        The cover image file path of group channel.
+ *  @param data              The data for channel.
+ *  @param operatorUserIds   The operator user IDs of channel.
+ *  @param customType        The custom type for channel.
+ *  @param progressHandler   The handler block to monitor progression. `bytesSent` is the number of bytes sent since the last time this method was called. `totalBytesSent` is the total number of bytes sent so far. `totalBytesExpectedToSend` is the expected length of the body <span>data</span>. These parameters are the same to the declaration of [`URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:`](https://developer.apple.com/reference/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc).
+ *  @param completionHandler The handler block to execute. `channel` is the open channel instance which is created.
+ */
+- (void)updateChannelWithName:(NSString * _Nullable)name coverImageFilePath:(NSString * _Nullable)coverImageFilePath data:(NSString * _Nullable)data operatorUserIds:(NSArray<NSString *> * _Nullable)operatorUserIds customType:(NSString * _Nullable)customType progressHandler:(nullable void (^)(int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend))progressHandler completionHandler:(nonnull void (^)(SBDOpenChannel * _Nullable channel, SBDError * _Nullable error))completionHandler;
 
 /**
  *  Gets an open channel instance from channel URL.
@@ -221,5 +425,25 @@
  *  @return If YES, the user ID is an operator.
  */
 - (BOOL)isOperatorWithUserId:(NSString * _Nonnull)userId;
+
+/**
+ Builds a open channel object from serialized <span>data</span>.
+ 
+ @param data Serialized <span>data</span>.
+ @return SBDOpenChannel object.
+ */
++ (nullable instancetype)buildFromSerializedData:(NSData * _Nonnull)data;
+
+/**
+ Serializes open channel object.
+ 
+ @return Serialized <span>data</span>.
+ */
+- (nullable NSData *)serialize;
+
+/**
+ *  Internal use only.
+ */
+- (nullable NSDictionary *)_toDictionary;
 
 @end

@@ -24,6 +24,23 @@
  */
 @property (strong, nonatomic, readonly, nullable) NSString *data;
 
+/**
+ *  Custom message type.
+ */
+@property (strong, nonatomic, readonly, nullable) NSString *customType;
+
 - (nullable instancetype)initWithDictionary:(NSDictionary * _Nonnull)dict;
+
+/**
+ Serializes message object.
+ 
+ @return Serialized <span>data</span>.
+ */
+- (nullable NSData *)serialize;
+
+/**
+ *  Internal use only.
+ */
+- (nullable NSDictionary *)_toDictionary;
 
 @end
