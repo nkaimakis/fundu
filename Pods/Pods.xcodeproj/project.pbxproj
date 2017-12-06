@@ -54,6 +54,7 @@
 		E47F6FACBA0C99EC907EA41B986ABD6B /* Pods_fundu_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_fundu_Tests.framework; path = "Pods-fundüTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE729298828F4F43E6902C6F3188B917 /* Pods-fundüUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-fundüUITests-umbrella.h"; sourceTree = "<group>"; };
 		F4C627AAEEB23EBCE811FE2BBFDCB4DE /* Pods-fundüUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-fundüUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F7B595E93605B02B512555B34588A2E8 /* SendBirdSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SendBirdSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +85,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2935EA799A694E44C39A24A9E81A6A7B /* SendBirdSDK */ = {
+			isa = PBXGroup;
+			children = (
+				3F5151F286FC3D2F6ECA8689B7F3CE81 /* Frameworks */,
+			);
+			name = SendBirdSDK;
+			path = SendBirdSDK;
+			sourceTree = "<group>";
+		};
+		3F5151F286FC3D2F6ECA8689B7F3CE81 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7B595E93605B02B512555B34588A2E8 /* SendBirdSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		44A136B8D2BFF5D79BA3FFCD92C3C758 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2935EA799A694E44C39A24A9E81A6A7B /* SendBirdSDK */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		47729A6A5B461C993AF522736BDE402A /* Pods-fundü */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +143,7 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				44A136B8D2BFF5D79BA3FFCD92C3C758 /* Pods */,
 				FAC0082535950F83328DE7B40F575836 /* Products */,
 				477FCFC130B7069CF52E20F7C57F8E08 /* Targets Support Files */,
 			);

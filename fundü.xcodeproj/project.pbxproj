@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		014D48491FD7505400EE532B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014D48481FD7505300EE532B /* ProfileViewController.swift */; };
+		014D484A1FD7505400EE532B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014D48481FD7505300EE532B /* ProfileViewController.swift */; };
+		014D484B1FD7505400EE532B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014D48481FD7505300EE532B /* ProfileViewController.swift */; };
 		01777AA21FCF6EF4002B95D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01777AA11FCF6EF4002B95D4 /* AppDelegate.swift */; };
 		01777AA41FCF6EF4002B95D4 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01777AA31FCF6EF4002B95D4 /* AuthViewController.swift */; };
 		01777AA91FCF6EF4002B95D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01777AA81FCF6EF4002B95D4 /* Assets.xcassets */; };
@@ -35,6 +38,8 @@
 		A0F140021FD68BC70087CB01 /* DashboardContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F140011FD68BC70087CB01 /* DashboardContainerViewController.swift */; };
 		B9860A1894F0D6516113A318 /* Pods_fundu_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 029A51EFFC1DC948FCFEECB4 /* Pods_fundu_Tests.framework */; };
 		C2775C663ACC39419B213A7E /* Pods_fundu_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05B456085D1F2882564EE697 /* Pods_fundu_UITests.framework */; };
+		CED57D9D1FD7625A004360FB /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED57D9B1FD76259004360FB /* ChatViewController.swift */; };
+		CED57D9E1FD7625A004360FB /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED57D9C1FD7625A004360FB /* GroupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		014D48481FD7505300EE532B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		01777A9E1FCF6EF4002B95D4 /* fundü.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fundü.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01777AA11FCF6EF4002B95D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01777AA31FCF6EF4002B95D4 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +96,8 @@
 		A0F13FFD1FD62A9B0087CB01 /* SlideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuCell.swift; sourceTree = "<group>"; };
 		A0F140011FD68BC70087CB01 /* DashboardContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardContainerViewController.swift; sourceTree = "<group>"; };
 		C55BD9E09721204BF15C2B99 /* Pods_fundu_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fundu_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CED57D9B1FD76259004360FB /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		CED57D9C1FD7625A004360FB /* GroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		EFB29697553143B8F7C26251 /* Pods-fundüUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fundüUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fundüUITests/Pods-fundüUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,10 +155,13 @@
 		01777AA01FCF6EF4002B95D4 /* fundü */ = {
 			isa = PBXGroup;
 			children = (
+				CED57D9B1FD76259004360FB /* ChatViewController.swift */,
+				CED57D9C1FD7625A004360FB /* GroupViewController.swift */,
 				01777AA11FCF6EF4002B95D4 /* AppDelegate.swift */,
 				01777AA31FCF6EF4002B95D4 /* AuthViewController.swift */,
 				A0F140011FD68BC70087CB01 /* DashboardContainerViewController.swift */,
 				A0F13FFD1FD62A9B0087CB01 /* SlideMenuCell.swift */,
+				014D48481FD7505300EE532B /* ProfileViewController.swift */,
 				018502BE1FD315F000469725 /* DashboardViewController.swift */,
 				A024BC801FD49EEB0074A7FB /* SlideMenuViewController.swift */,
 				A024BC841FD49F490074A7FB /* CenterViewControllerDelegate.swift */,
@@ -513,10 +524,13 @@
 				A024BC7B1FD385970074A7FB /* FeedViewController.swift in Sources */,
 				A09B6CBB1FD7A6AA00142E3C /* StatImageView.swift in Sources */,
 				A09B6CB71FD7330200142E3C /* DailyStat.swift in Sources */,
+				014D48491FD7505400EE532B /* ProfileViewController.swift in Sources */,
 				A0F13FFE1FD62A9B0087CB01 /* SlideMenuCell.swift in Sources */,
 				A09B6CB51FD7322D00142E3C /* FeedCollectionTableViewCell.swift in Sources */,
 				01777AA21FCF6EF4002B95D4 /* AppDelegate.swift in Sources */,
 				A024BC851FD49F490074A7FB /* CenterViewControllerDelegate.swift in Sources */,
+				CED57D9E1FD7625A004360FB /* GroupViewController.swift in Sources */,
+				CED57D9D1FD7625A004360FB /* ChatViewController.swift in Sources */,
 				A0F140021FD68BC70087CB01 /* DashboardContainerViewController.swift in Sources */,
 				A09B6CB11FD7312C00142E3C /* FeedTableViewCell.swift in Sources */,
 			);
@@ -526,6 +540,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				014D484A1FD7505400EE532B /* ProfileViewController.swift in Sources */,
 				01777AB71FCF6EF4002B95D4 /* fundu_Tests.swift in Sources */,
 				018502C01FD315F000469725 /* DashboardViewController.swift in Sources */,
 			);
@@ -535,6 +550,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				014D484B1FD7505400EE532B /* ProfileViewController.swift in Sources */,
 				01777AC21FCF6EF4002B95D4 /* fundu_UITests.swift in Sources */,
 				018502C11FD315F000469725 /* DashboardViewController.swift in Sources */,
 			);
