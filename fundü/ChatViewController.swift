@@ -13,6 +13,8 @@ class ChatViewController: UITableViewController, SBDChannelDelegate {
     var username:String! = "test"
     var token:String!
     var channels:[SBDGroupChannel]?
+    var selectedChannel:SBDGroupChannel?
+    var groupViewController:GroupViewController?
     let unique_identifier:String = "lit ass chat view"
     
     override func viewDidLoad() {
@@ -40,6 +42,9 @@ class ChatViewController: UITableViewController, SBDChannelDelegate {
     func channel(_ sender: SBDBaseChannel, didReceive message: SBDBaseMessage) {
         let userMessage = message as! SBDUserMessage
         print(userMessage.message!)
+        if sender == selectedChannel {
+            self.groupViewController!.receive(userMessage)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,6 +54,16 @@ class ChatViewController: UITableViewController, SBDChannelDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         
+    }
+    
+    func send(_ text: String) {
+        self.selectedChannel!.sendUserMessage(text, completionHandler: { (message, error) in
+            if error != nil {
+                print(error.debugDescription)
+                return
+            }
+            self.channel(self.selectedChannel!, didReceive: message!)
+        })
     }
     
     func setNavButtons(){
@@ -80,13 +95,6 @@ class ChatViewController: UITableViewController, SBDChannelDelegate {
                 print(error.debugDescription)
                 return
             }
-            channel!.sendUserMessage("sup", completionHandler: { (message, error) in
-                if error != nil {
-                    print(error.debugDescription)
-                    return
-                }
-                self.channel(channel!, didReceive: message!)
-            })
         }
         let query = SBDGroupChannel.createMyGroupChannelListQuery()!
         query.includeEmptyChannel = true
@@ -118,9 +126,11 @@ class ChatViewController: UITableViewController, SBDChannelDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let groupViewController = GroupViewController()
-        groupViewController.chatController = self
-        self.navigationController!.pushViewController(groupViewController, animated: true)
+        self.groupViewController = GroupViewController()
+        self.groupViewController!.chatController = self
+        let i = indexPath.row
+        selectedChannel = channels![i]
+        self.navigationController!.pushViewController(self.groupViewController!, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
