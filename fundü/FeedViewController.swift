@@ -47,11 +47,11 @@ class FeedViewController: UIViewController {
     func getSummaryFeedEvents() -> [FeedEvent]{
         //Stubbing this for sake of the demo
         var events = [FeedEvent]()
-        events = [FeedEvent(image: "user1", message: "Jordan Coppert just passed you on the leaderboards! Complete more challenges to catch back up.", time: "now"),
-                  FeedEvent(image: "company1", message: "GOOGL announces acquisition of large augmented reality firm.", time: "3 hrs"),
-                  FeedEvent(image: "user2", message: "Myrl Marmarelis just joined your group RainMakers, send a message to welcome them!", time: "1 hr"),
-                  FeedEvent(image: "user3", message: "Nick Kaimakis just purchased AAPL at $27.59 a share.", time: "Yesterday"),
-                  FeedEvent(image: "company2", message: "TSLA stock up 7% after semi announcement, buy now!", time: "6 hrs")]
+        events = [FeedEvent(image: "user1", message: "Jordan Coppert just passed you on the leaderboards! Complete more challenges to catch back up.", time: "now", type: .other),
+                  FeedEvent(image: "company1", message: "GOOGL announces acquisition of large augmented reality firm.", time: "3 hrs", type: .company("GOOGL")),
+                  FeedEvent(image: "user2", message: "Myrl Marmarelis just joined your group RainMakers, send a message to welcome them!", time: "1 hr", type: .other),
+                  FeedEvent(image: "user3", message: "Nick Kaimakis just purchased AAPL at $27.59 a share.", time: "Yesterday", type: .company("AAPL")),
+                  FeedEvent(image: "company2", message: "TSLA stock up 7% after semi announcement, buy now!", time: "6 hrs", type: .company("TSLA"))]
         return events
     }
     
@@ -106,6 +106,19 @@ extension FeedViewController: UITableViewDelegate {
     //Prevent highlight of cell after tap
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath)
+        if let eventCell = cell as? FeedTableViewCell {
+            let event = eventCell.event!
+            switch event.type {
+            case .company(let ticker):
+                let companyView = CompanyViewController()
+                companyView.ticker = ticker
+                let controller = UINavigationController(rootViewController: companyView)
+                self.present(controller, animated: true)
+            case .other:
+                break
+            }
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

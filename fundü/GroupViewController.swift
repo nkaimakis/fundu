@@ -56,7 +56,7 @@ class GroupViewController: UIViewController {
         self.agreeButton.setTitle("Agree", for: UIControlState.normal)
         self.agreeButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         self.agreeButton.setTitleColor(UIColor.red, for: UIControlState.highlighted)
-        self.agreeButton.backgroundColor = UIColor(red:0.9, green:0.9, blue:0.9, alpha:0.8)
+        self.agreeButton.backgroundColor = UIColor(red:0.92, green:0.9, blue:0.9, alpha:0.8)
         self.agreeButton.addTarget(self, action: #selector(agreeAction), for: UIControlEvents.touchUpInside)
         self.disagreeButton.frame = CGRect(x: dimensions.maxX - 90,
                                            y: dimensions.maxY - self.inputHeight - self.keyboardHeight - 35,
@@ -65,7 +65,7 @@ class GroupViewController: UIViewController {
         self.disagreeButton.setTitle("Disagree", for: UIControlState.normal)
         self.disagreeButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         self.disagreeButton.setTitleColor(UIColor.red, for: UIControlState.highlighted)
-        self.disagreeButton.backgroundColor = UIColor(red:0.9, green:0.9, blue:0.9, alpha:0.8)
+        self.disagreeButton.backgroundColor = UIColor(red:0.92, green:0.9, blue:0.9, alpha:0.8)
         self.disagreeButton.addTarget(self, action: #selector(disagreeAction), for: UIControlEvents.touchUpInside)
         self.proposeButton.frame = CGRect(x: dimensions.maxX - 270,
                                            y: dimensions.maxY - self.inputHeight - self.keyboardHeight - 35,
@@ -74,7 +74,7 @@ class GroupViewController: UIViewController {
         self.proposeButton.setTitle("Propose", for: UIControlState.normal)
         self.proposeButton.setTitleColor(UIColor.black, for: UIControlState.normal)
         self.proposeButton.setTitleColor(UIColor.red, for: UIControlState.highlighted)
-        self.proposeButton.backgroundColor = UIColor(red:0.9, green:0.9, blue:0.9, alpha:0.8)
+        self.proposeButton.backgroundColor = UIColor(red:0.92, green:0.9, blue:0.9, alpha:0.8)
         self.proposeButton.addTarget(self, action: #selector(proposeAction), for: UIControlEvents.touchUpInside)
         self.addSubviews()
     }

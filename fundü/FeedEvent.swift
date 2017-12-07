@@ -8,8 +8,14 @@
 
 import Foundation
 
+enum FeedType {
+    case company(String)
+    case other
+}
+
 struct FeedEvent{
     var image:String
     var message:String
     var time:String
+    var type:FeedType
 }
