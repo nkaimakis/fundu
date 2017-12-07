@@ -94,6 +94,7 @@ class FeedViewController: UIViewController {
     
     @objc func showMessages(){
         let chatViewController = ChatViewController()
+        chatViewController.username = (self.parent!.parent as! DashboardViewController).username
         let controller = UINavigationController(rootViewController: chatViewController)
         controller.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext;
         self.parent!.parent!.present(controller, animated: true, completion: nil) // todo make nicer

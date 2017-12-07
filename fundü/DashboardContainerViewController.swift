@@ -34,6 +34,7 @@ class DashboardContainerViewController: UIViewController {
         view.addSubview(centerViewController.view)
         addChildViewController(centerViewController)
         centerViewController.didMove(toParentViewController: self)
+        centerViewController.username = self.username
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         //centerViewController.view.addGestureRecognizer(panGestureRecognizer)
     }

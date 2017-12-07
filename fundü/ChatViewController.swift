@@ -83,23 +83,28 @@ class ChatViewController: UITableViewController, SBDChannelDelegate {
             (action: UIAlertAction) in
                 let fields = alert.textFields!
                 let name = fields[0].text!
-                self.createChannel(name)
+                let users = fields[1].text!.split(separator: " ")
+                self.createChannel(name, users: users.map {String($0)})
         })
         alert.addAction(action)
         alert.addTextField(configurationHandler: {(textField: UITextField!) in
             textField.placeholder = "Enter here"
         })
+        alert.addTextField(configurationHandler: {(textField: UITextField!) in
+            textField.placeholder = "Names of the people to add"
+        })
         self.present(alert, animated: true, completion: nil)
     }
     
-    func createChannel(_ name: String) {
-        SBDGroupChannel.createChannel(withName: name, userIds: ["test"], coverUrl: nil, data: nil) {
+    func createChannel(_ name: String, users: [String]) {
+        SBDGroupChannel.createChannel(withName: name, userIds: users, coverUrl: nil, data: nil) {
             (channel, error) in
             if error != nil {
                 print(error.debugDescription)
                 return
             }
         }
+        self.queryChannels()
     }
     
     @objc func close() {
@@ -110,6 +115,10 @@ class ChatViewController: UITableViewController, SBDChannelDelegate {
     }
     
     func justConnected() {
+        self.queryChannels()
+    }
+    
+    func queryChannels() {
         let query = SBDGroupChannel.createMyGroupChannelListQuery()!
         query.includeEmptyChannel = true
         query.loadNextPage() { (channels, error) in
