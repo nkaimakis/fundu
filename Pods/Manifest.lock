@@ -3,15 +3,18 @@ PODS:
     - Charts/Core (= 3.0.4)
   - Charts/Core (3.0.4)
   - SendBirdSDK (3.0.10)
+  - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Charts
   - SendBirdSDK
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Charts: 0705898046257443f0afbbc3179f4b67507b6e48
   SendBirdSDK: 83f20acb02f662004db5c8729346daa7e089f4d8
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 1ef355df43a0590b7536a34ab482bb1525e44010
+PODFILE CHECKSUM: de997f020c209115a53ad8dbcff1758b3ac0ffc1
 
 COCOAPODS: 1.3.1
