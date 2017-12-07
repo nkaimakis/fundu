@@ -313,7 +313,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 01777A991FCF6EF4002B95D4 /* Build configuration list for PBXProject "fundü" */;
+			buildConfigurationList = 01777A991FCF6EF4002B95D4 /* Build configuration list for PBXProject "fundü" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -472,12 +472,14 @@
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${PODS_ROOT}/SendBirdSDK/SendBirdSDK.framework",
 				"${PODS_ROOT}/SendBirdSDK/SendBirdSDK.framework.dSYM",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SendBirdSDK.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/SendBirdSDK.framework.dSYM",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -798,7 +800,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		01777A991FCF6EF4002B95D4 /* Build configuration list for PBXProject "fundü" */ = {
+		01777A991FCF6EF4002B95D4 /* Build configuration list for PBXProject "fundü" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01777AC41FCF6EF4002B95D4 /* Debug */,
