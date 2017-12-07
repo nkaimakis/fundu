@@ -113,6 +113,7 @@ extension FeedViewController: UITableViewDelegate {
             case .company(let ticker):
                 let companyView = CompanyViewController()
                 companyView.ticker = ticker
+                companyView.username = self.username
                 let controller = UINavigationController(rootViewController: companyView)
                 self.present(controller, animated: true)
             case .other:

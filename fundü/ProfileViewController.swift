@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        screenSize = UIScreen.main.bounds
+        self.screenSize = UIScreen.main.bounds
         setNavBar()
         self.view.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.72, alpha:1.0)
         renderProfile()
