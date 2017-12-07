@@ -16,9 +16,6 @@
 		01777AAC1FCF6EF4002B95D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01777AAA1FCF6EF4002B95D4 /* LaunchScreen.storyboard */; };
 		01777AB71FCF6EF4002B95D4 /* fundu_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01777AB61FCF6EF4002B95D4 /* fundu_Tests.swift */; };
 		01777AC21FCF6EF4002B95D4 /* fundu_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01777AC11FCF6EF4002B95D4 /* fundu_UITests.swift */; };
-		017DA9661FD882C700EAC217 /* StockAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017DA9651FD882C700EAC217 /* StockAPIManager.swift */; };
-		017DA9671FD882C700EAC217 /* StockAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017DA9651FD882C700EAC217 /* StockAPIManager.swift */; };
-		017DA9681FD882C700EAC217 /* StockAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017DA9651FD882C700EAC217 /* StockAPIManager.swift */; };
 		018502BF1FD315F000469725 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018502BE1FD315F000469725 /* DashboardViewController.swift */; };
 		018502C01FD315F000469725 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018502BE1FD315F000469725 /* DashboardViewController.swift */; };
 		018502C11FD315F000469725 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018502BE1FD315F000469725 /* DashboardViewController.swift */; };
@@ -76,7 +73,6 @@
 		01777ABD1FCF6EF4002B95D4 /* fundüUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "fundüUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01777AC11FCF6EF4002B95D4 /* fundu_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fundu_UITests.swift; sourceTree = "<group>"; };
 		01777AC31FCF6EF4002B95D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		017DA9651FD882C700EAC217 /* StockAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockAPIManager.swift; sourceTree = "<group>"; };
 		018502BE1FD315F000469725 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		018502CA1FD3208200469725 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
 		029A51EFFC1DC948FCFEECB4 /* Pods_fundu_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fundu_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,7 +177,6 @@
 				01777AAA1FCF6EF4002B95D4 /* LaunchScreen.storyboard */,
 				01777AAD1FCF6EF4002B95D4 /* Info.plist */,
 				A09B6CBA1FD7A6AA00142E3C /* StatImageView.swift */,
-				017DA9651FD882C700EAC217 /* StockAPIManager.swift */,
 			);
 			path = "fundü";
 			sourceTree = "<group>";
@@ -318,7 +313,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 01777A991FCF6EF4002B95D4 /* Build configuration list for PBXProject "fundü" */;
+			buildConfigurationList = 01777A991FCF6EF4002B95D4 /* Build configuration list for PBXProject "fundü" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -475,10 +470,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-fundü/Pods-fundü-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -535,7 +532,6 @@
 				014D48491FD7505400EE532B /* ProfileViewController.swift in Sources */,
 				A0F13FFE1FD62A9B0087CB01 /* SlideMenuCell.swift in Sources */,
 				A09B6CB51FD7322D00142E3C /* FeedCollectionTableViewCell.swift in Sources */,
-				017DA9661FD882C700EAC217 /* StockAPIManager.swift in Sources */,
 				01777AA21FCF6EF4002B95D4 /* AppDelegate.swift in Sources */,
 				A024BC851FD49F490074A7FB /* CenterViewControllerDelegate.swift in Sources */,
 				CED57D9E1FD7625A004360FB /* GroupViewController.swift in Sources */,
@@ -550,7 +546,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				014D484A1FD7505400EE532B /* ProfileViewController.swift in Sources */,
-				017DA9671FD882C700EAC217 /* StockAPIManager.swift in Sources */,
 				01777AB71FCF6EF4002B95D4 /* fundu_Tests.swift in Sources */,
 				018502C01FD315F000469725 /* DashboardViewController.swift in Sources */,
 			);
@@ -561,7 +556,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				014D484B1FD7505400EE532B /* ProfileViewController.swift in Sources */,
-				017DA9681FD882C700EAC217 /* StockAPIManager.swift in Sources */,
 				01777AC21FCF6EF4002B95D4 /* fundu_UITests.swift in Sources */,
 				018502C11FD315F000469725 /* DashboardViewController.swift in Sources */,
 			);
@@ -802,7 +796,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		01777A991FCF6EF4002B95D4 /* Build configuration list for PBXProject "fundü" */ = {
+		01777A991FCF6EF4002B95D4 /* Build configuration list for PBXProject "fundü" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				01777AC41FCF6EF4002B95D4 /* Debug */,
