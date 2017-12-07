@@ -67,18 +67,39 @@ class ChatViewController: UITableViewController, SBDChannelDelegate {
     }
     
     func setNavButtons(){
-        let newChatButton = UIBarButtonItem(image: UIImage(named: "messages"),
+        let newChatButton = UIBarButtonItem(title: "New Group",
                                             style: UIBarButtonItemStyle.plain,
                                             target: self, action: #selector(newChat))
         self.navigationItem.setRightBarButton(newChatButton, animated: false)
-        let closeButton = UIBarButtonItem(image: UIImage(named: "messages"),
+        let closeButton = UIBarButtonItem(title: "Back",
                                           style: UIBarButtonItemStyle.plain,
                                           target: self, action: #selector(close))
         self.navigationItem.setLeftBarButton(closeButton, animated: false)
     }
     
     @objc func newChat() {
-        
+        let alert = UIAlertController(title: "Fund Name", message: "Enter the name of your group.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Create", style: UIAlertActionStyle.default, handler: {
+            (action: UIAlertAction) in
+                let fields = alert.textFields!
+                let name = fields[0].text!
+                self.createChannel(name)
+        })
+        alert.addAction(action)
+        alert.addTextField(configurationHandler: {(textField: UITextField!) in
+            textField.placeholder = "Enter here"
+        })
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func createChannel(_ name: String) {
+        SBDGroupChannel.createChannel(withName: name, userIds: ["test"], coverUrl: nil, data: nil) {
+            (channel, error) in
+            if error != nil {
+                print(error.debugDescription)
+                return
+            }
+        }
     }
     
     @objc func close() {
@@ -89,13 +110,6 @@ class ChatViewController: UITableViewController, SBDChannelDelegate {
     }
     
     func justConnected() {
-        SBDGroupChannel.createChannel(withName: "$$$", userIds: ["test"], coverUrl: nil, data: nil) {
-            (channel, error) in
-            if error != nil {
-                print(error.debugDescription)
-                return
-            }
-        }
         let query = SBDGroupChannel.createMyGroupChannelListQuery()!
         query.includeEmptyChannel = true
         query.loadNextPage() { (channels, error) in

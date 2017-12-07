@@ -17,7 +17,7 @@ class GroupViewController: UIViewController {
     let sendButton = UIButton()
     
     let inputHeight = CGFloat(100)
-    let keyboardHeight = CGFloat(216)
+    let keyboardHeight = CGFloat(350)
     
     override func viewDidLoad() {
         super.viewDidLoad()
