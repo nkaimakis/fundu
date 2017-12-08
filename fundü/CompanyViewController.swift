@@ -51,7 +51,7 @@ class CompanyViewController: UIViewController {
     }
     
     @objc func updateCounting(){
-        updateStockInfo(ticker: "TSLA")
+        updateStockInfo(ticker: self.ticker)
         print("updating..")
     }
     
@@ -68,7 +68,7 @@ class CompanyViewController: UIViewController {
         let defaultData: [Double] = [315.0113, 316.6501, 314.0113, 314.0001, 315.0113, 315.3421, 315.3313, 316.0021, 315.8113, 316.0128, 316.8003, 316.3281, 316.3481, 316.3781, 316.4281, 316.5281, 316.6281, 316.3281, 316.3281, 316.3281, 316.3281, 316.3281]
         self.previousValues = defaultData
         
-        updateStockInfo(ticker: "TSLA")
+        updateStockInfo(ticker: self.ticker)
         var lineChartEntry = [ChartDataEntry]()
         let prices: [Double] = self.previousValues //self.stockInfo.timeSeries
         
