@@ -21,7 +21,14 @@ class ChatViewController: UITableViewController, SBDChannelDelegate {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red:0.21, green:0.84, blue:0.89, alpha:0.8)
         self.setNavButtons()
-        setupChatCell()
+        self.setupChatCell()
+        self.connect() {
+            self.justConnected()
+        }
+        // Do any additional setup after loading the view.
+    }
+    
+    func connect(_ handler: @escaping ()->()) {
         SBDMain.add(self as SBDChannelDelegate, identifier: unique_identifier)
         if SBDMain.getConnectState() != SBDWebSocketConnectionState.open {
             SBDMain.connect(withUserId: username) { (user, error) in
@@ -30,13 +37,12 @@ class ChatViewController: UITableViewController, SBDChannelDelegate {
                     return
                 }
                 print("CONNECTED")
-                self.justConnected()
-            //SBDMain.updateCurrentUserInfo(withNickname: , profileUrl: , completionHandler: ) use this to set nicknames
+                handler()
+                //SBDMain.updateCurrentUserInfo(withNickname: , profileUrl: , completionHandler: ) use this to set nicknames
             }
         } else {
-            self.justConnected()
+            handler() // handler? I HARDLY KNOW HER
         }
-        // Do any additional setup after loading the view.
     }
     
     func channel(_ sender: SBDBaseChannel, didReceive message: SBDBaseMessage) {
@@ -139,16 +145,23 @@ class ChatViewController: UITableViewController, SBDChannelDelegate {
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.channels ?? []).count
+        return (self.channels ?? [SBDGroupChannel()]).count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "ChatCell")
-        cell.textLabel?.text = self.channels![indexPath.row].name
+        if self.channels == nil {
+            cell.textLabel?.text = "Loading..."
+        } else {
+            cell.textLabel?.text = self.channels![indexPath.row].name
+        }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if self.channels == nil {
+            return
+        }
         self.groupViewController = GroupViewController()
         self.groupViewController!.chatController = self
         let i = indexPath.row

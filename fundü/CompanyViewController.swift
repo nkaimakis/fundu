@@ -32,6 +32,14 @@ class CompanyViewController: UIViewController {
         self.scheduledTimerWithTimeInterval()
     }
     
+    func buy() {
+        let chat = ChatViewController()
+        chat.connect() {
+            print("yes")
+            chat.close()
+        }
+    }
+    
     func addSubviews() {
         self.setNavBar()
         self.view.addSubview(self.tickerLabel)
@@ -160,23 +168,24 @@ class CompanyViewController: UIViewController {
 //    }
     
     func setNavBar() {
-        self.navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 50))
+        //self.navBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: screenSize.width, height: 50))
         addBackButton()
-        self.view.addSubview(navBar)
+        //self.view.addSubview(navBar)
         print("after adding nav")
     }
     
     func addBackButton() {
-        let navItem = UINavigationItem(title: self.ticker)
+        //let navItem = UINavigationItem(title: self.ticker)
         let backButton = UIBarButtonItem(title: "< Dashboard", style: UIBarButtonItemStyle.plain, target: self, action: #selector(backAction))
-        navItem.leftBarButtonItem = backButton
-        self.navBar.setItems([navItem], animated: false)
+        //navItem.leftBarButtonItem = backButton
+        self.navigationItem.setLeftBarButton(backButton, animated: false)
     }
     
     @objc func backAction(_ sender: UIButton) {
-        let dashViewController = DashboardContainerViewController()
-        dashViewController.username = self.username
-        present(dashViewController, animated: true, completion: nil)
+        //let dashViewController = DashboardContainerViewController()
+        //dashViewController.username = self.username
+        //present(dashViewController, animated: true, completion: nil)
+        self.navigationController!.dismiss(animated: true)
     }
     
     func updateStockInfo(ticker:String) {
