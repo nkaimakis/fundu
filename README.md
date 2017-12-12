@@ -1,10 +1,8 @@
-#fundü
+fundü
 ------------
 fundü is a mobile iOS application that enables users to form investment groups and share in the learning process of investing competitively and collaboratively through a social and educational based platform. Started November 2017.
 
-*Nick Kaimakis
-*Myrl Marmarelis
-*Jordan Coppert
+(Jordan Coppert, Nick Kaimakis, Myrl Marmarelis)
 
 Mission:
 ------------
